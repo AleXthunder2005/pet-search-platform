@@ -1,0 +1,34 @@
+.icon {
+  color: var(--color, var(--primary-orange-color));
+  fill: currentColor;
+  stroke: currentColor;
+  transition: color 0.3s ease;
+
+  &--color {
+    &_orange {
+      color: var(--primary-orange-color);
+    }
+    &_black {
+      color: var(--primary-black-color);
+    }
+    &_gray {
+      color: var(--primary-light-gray-color);
+    }
+  }
+
+  &--hover-color {
+    &_orange:hover {
+      color: var(--primary-orange-hover-color);
+    }
+    &_black:hover {
+      color: var(--primary-black-hover-color);
+    }
+    &_gray:hover {
+      color: var(--primary-hover-light-gray-color);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
