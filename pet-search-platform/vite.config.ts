@@ -1,7 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-// https://vite.dev/config/
+// Эмуляция __dirname в ESM
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@app': path.resolve(__dirname, './src/app'),
+      '@ui': path.resolve(__dirname, './src/ui'),
+      '@components': path.resolve(__dirname, './src/ui/components'),
+      '@layouts': path.resolve(__dirname, './src/ui/layouts'),
+      '@features': path.resolve(__dirname, './src/features'),
+      '@state': path.resolve(__dirname, './src/state'),
+      '@data': path.resolve(__dirname, './src/data'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+    },
+  },
 })
