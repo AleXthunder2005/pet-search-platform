@@ -1,7 +1,7 @@
 .icon {
   color: var(--color, var(--primary-orange-color));
   fill: currentColor;
-  stroke: currentColor;
+  //stroke: currentColor;
   transition: color 0.3s ease;
 
   &--color {

@@ -17,31 +17,32 @@
   --shadow-color: rgba(0, 0, 0, 0.3);
   --font-family: Tahoma, sans-serif;
 
-  --success-color: #28a745;
-  --error-color: #dc3545;
+  --success-text-color: #28a745;
+  --success-border-color: #127028;
+  --success-background-color: #e5ffed;
+
+
+  --error-text-color: #dc3545;
+  --error-border-color: #a81928;
+  --error-background-color: #ffeaea;
 }
 
 * {
   padding: 0;
   margin: 0;
-  border: none;
   box-sizing: border-box;
 }
 
-a, a:link, a:visited  {
-  text-decoration: none;
-}
-
-a:hover  {
+a, a:link, a:visited, a:hover {
   text-decoration: none;
 }
 
 button {
-  border: none;
-  outline: none;
-  background: none;
-  color: inherit;
   cursor: pointer;
+}
+
+input {
+  outline: none;
 }
 
 html {
