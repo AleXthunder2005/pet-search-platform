@@ -1,3 +1,20 @@
+:root {
+  --primary-orange-color: #B85B2F;
+  --primary-orange-hover-color: #8f3c14;
+  --primary-orange-focused-color: #95431b;
+
+  --primary-white-color: #FFFFFF;
+  --primary-light-gray: #C7CCCC;
+  --primary-light-hover-gray: #919191;
+  --primary-light-focused-gray: #4c4c4c;
+
+  --primary-black-color: #394345;
+  --primary-black-hover-color: #191717;
+
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --font-family: Tahoma, sans-serif;
+}
+
 * {
   padding: 0;
   margin: 0;
