@@ -1,5 +1,26 @@
 .input-container {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  row-gap: 4px;
+
+  &__label {
+    font-family: var(--font-family);
+    font-size: var(--label-font-size);
+    font-weight: var(--label-font-weight);
+    color: var(--label-color);
+    padding-left: 5px;
+
+    &--required::after {
+      content: '*';
+      color: var(--primary-orange-color);
+    }
+  }
+}
+
+.input-box {
+  display: flex;
   flex-direction: row;
   gap: 10px;
   align-items: center;
@@ -13,9 +34,9 @@
     flex: 1 1 0;
     padding: 10px;
     border: 2px solid var(--primary-light-gray-color);
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
+    border-radius: var(--input-border-radius);
+    font-size: var(--input-font-size);
+    font-weight: var(--input-font-weight);
     color: var(--primary-black-color);
     transition: border-color 0.3s ease;
     font-family: var(--font-family);

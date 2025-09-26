@@ -15,7 +15,6 @@
   --primary-black-hover-color: #191717;
 
   --shadow-color: rgba(0, 0, 0, 0.3);
-  --font-family: Tahoma, sans-serif;
 
   --success-text-color: #28a745;
   --success-border-color: #127028;
@@ -25,6 +24,16 @@
   --error-text-color: #dc3545;
   --error-border-color: #a81928;
   --error-background-color: #ffeaea;
+
+  --font-family: Tahoma, sans-serif;
+  --input-font-size: 16px;
+  --input-font-weight: 500;
+  --input-border-radius: 8px;
+
+  --label-font-size: 16px;
+  --label-font-weight: 300;
+  --label-color: var(--primary-black-color);
+
 }
 
 * {
