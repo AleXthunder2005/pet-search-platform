@@ -4,9 +4,13 @@
   --primary-orange-focused-color: #95431b;
 
   --primary-white-color: #FFFFFF;
+  --primary-hover-white-color: #f4f4f4;
+
   --primary-light-gray-color: #C7CCCC;
   --primary-hover-light-gray-color: #919191;
   --primary-light-focused-gray: #4c4c4c;
+
+  --primary-dark-gray-color: #575757;
 
   --primary-disabled-color: #919191;
   --primary-light-disabled-color: #dad9d9;
@@ -35,6 +39,12 @@
   --label-color: var(--primary-black-color);
 
   --checkbox-size: 18px;
+
+  --tabs-font-size: 16px;
+  --tabs-font-weight: 500;
+  --tabs-title-font-weight: 700;
+  --tabs-border-radius: 5px;
+
 
 }
 

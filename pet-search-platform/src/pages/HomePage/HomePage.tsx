@@ -5,6 +5,8 @@ import {Checkbox, Password, RadioGroup, Select, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
 import {Date} from "@components/Input";
 import {Searcher} from "@layouts/Searcher";
+import {TabList} from "@layouts/TabList";
+import type {ListItem} from "@layouts/TabList/TabList.tsx";
 
 export const HomePage = () => {
 
@@ -12,6 +14,16 @@ export const HomePage = () => {
     const successIcon = <Icon name={"successCircle"}/>
 
     const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    const items: ListItem[] = [
+        { label: "Британский кот", count: 10 },
+        { label: "Собака хаски", count: 20 },
+        { label: "Сфинкс", count: 5 },
+        { label: "Немецкая овчарка", count: 15 },
+        { label: "Шотландская вислоухая", count: 8 },
+        { label: "Мейн-кун", count: 12 },
+        { label: "Лабрадор ретривер", count: 18 },
+    ];
 
     return (
         <div style={{display: "flex", gap: 10, flexDirection: "column"}}>
@@ -63,6 +75,8 @@ export const HomePage = () => {
             <Checkbox label={"checkbox"} required/>
 
             <Searcher/>
+
+            <TabList listTitle={"Вид животного"} items={items} activeItem={items[1]}/>
         </div>
     );
 };
