@@ -34,6 +34,8 @@
   --label-font-weight: 300;
   --label-color: var(--primary-black-color);
 
+  --checkbox-size: 18px;
+
 }
 
 * {

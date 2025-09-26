@@ -1,0 +1,57 @@
+@use "../../../styles/inputsMixins" as *;
+
+.checkbox-container {
+  @include input-container;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+
+  &__input {
+    appearance: none;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    border: 2px solid var(--primary-light-gray-color);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+
+    &:disabled {
+      @include input-disabled;
+    }
+
+    &:focus {
+      @include input-focused;
+    }
+
+    &:hover:not(:disabled, :checked) {
+      @include input-hovered;
+    }
+
+    &:checked {
+      border-color: var(--primary-orange-color);
+      background-color: var(--primary-orange-color);
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 4px;
+        height: 8px;
+        border: solid var(--primary-white-color);
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &__label {
+    @include input-label;
+    cursor: pointer;
+
+    &--required::after {
+      content: "*";
+      color: var(--primary-orange-color);
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import {Button} from "@components/Button";
 import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
-import {Password, RadioGroup, Select, Text} from "@components/Input";
+import {Checkbox, Password, RadioGroup, Select, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
 import {Date} from "@components/Input";
 
@@ -58,6 +58,8 @@ export const HomePage = () => {
                 {value: "dsfsdf", label: "nnnnn"},
                 {value: "sfddfdf", label: "aaaaa"},
             ]}/>
+
+            <Checkbox label={"checkbox"} required/>
         </div>
     );
 };

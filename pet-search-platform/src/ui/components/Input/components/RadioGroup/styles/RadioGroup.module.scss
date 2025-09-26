@@ -24,12 +24,13 @@
     display: flex;
     align-items: center;
     gap: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__button {
     accent-color: var(--primary-orange-color);
-    &:hover {
-      cursor: pointer;
-    }
   }
 }
