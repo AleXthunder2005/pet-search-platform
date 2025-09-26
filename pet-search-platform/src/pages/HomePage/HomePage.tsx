@@ -1,7 +1,7 @@
 import {Button} from "@components/Button";
 import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
-import {Password, Text} from "@components/Input";
+import {Password, Select, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
 import {Date} from "@components/Input";
 
@@ -9,6 +9,8 @@ export const HomePage = () => {
 
     const errorIcon = <Icon name={"errorTriangle"}/>
     const successIcon = <Icon name={"successCircle"}/>
+
+    const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
     return (
         <div style={{display: "flex", gap: 10, flexDirection: "column"}}>
@@ -23,7 +25,7 @@ export const HomePage = () => {
             <Icon name={"errorTriangle"} size={80} color={'black'} hoverColor={'black'}/>
             <Icon name={"eye"} size={80} color={'black'} hoverColor={'black'}/>
 
-            <Text placeholder={"текст..."} label={"подпись"} required title={"попа"}/>
+            <Text placeholder={"текст..."} label={"подпись"} required title={"fff"} list={"data"}/>
             <Text placeholder={"текст..."}/>
             <Text error icon={errorIcon} placeholder={"текст..."} />
             <Text error icon={errorIcon} placeholder={"текст..."} label={"подпись"} required/>
@@ -44,6 +46,10 @@ export const HomePage = () => {
             <Date label={"date"} placeholder={"date"} required success icon={successIcon}/>
             <Date label={"date"} placeholder={"date"} required error icon={errorIcon}/>
 
+            <Select label={"select"} options={options} required/>
+            <Select label={"select"} options={options} required disabled/>
+            <Select label={"select"} options={options} required icon={successIcon}/>
+            <Select label={"select"} options={options} required icon={errorIcon}/>
         </div>
     );
 };

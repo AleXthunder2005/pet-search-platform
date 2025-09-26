@@ -1,0 +1,44 @@
+@use "../../../styles/inputsMixins" as *;
+
+.select-container {
+  @include input-container;
+
+  &__label {
+    @include input-label;
+  }
+}
+
+.select-box {
+  @include input-box;
+
+  &__icon {
+    @include input-icon;
+  }
+
+  &__select {
+    @include input-base;
+    flex: 1 1 0;
+    outline: none;
+
+    &--error {
+      @include input-error;
+    }
+
+    &--success {
+      @include input-success;
+    }
+
+    &:disabled {
+      @include input-disabled;
+    }
+
+    &:focus:not(&--error, &--success) {
+      @include input-focused;
+    }
+
+    &:hover:not(:focus, &--error, &--success, :disabled) {
+      @include input-hovered;
+      cursor: pointer;
+    }
+  }
+}

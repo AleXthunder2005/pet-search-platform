@@ -3,7 +3,7 @@ import clsx from "clsx";
 import styles from "./styles/Date.module.scss";
 import type {InputBaseProps} from "@components/Input/input.types.ts";
 
-interface TextProps extends InputBaseProps{
+interface DateProps extends InputBaseProps{
     icon?: React.ReactNode;
 }
 
@@ -15,7 +15,7 @@ export const Date = ({
                          required,
                          icon,
                          className,
-                         ...rest }: TextProps) => {
+                         ...rest }: DateProps) => {
     const inputClassList = clsx(
         styles['input-box__input'],
         {
