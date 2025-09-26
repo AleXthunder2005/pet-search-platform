@@ -10,17 +10,27 @@ interface IconProps {
     color?: IconColor;
     hoverColor?: IconColor;
     className?: string;
+    hoverable?: boolean;
 }
 
 export const Icon = ({
                          name,
                          size = 30,
                          color,
+                         hoverable = false,
                          hoverColor,
                          className,
                      }: IconProps) => {
     const SvgIcon = iconsMap[name];
-    const classList = clsx(styles.icon, className, styles[`icon--color_${color}`], styles[`icon--hover-color_${hoverColor}`]);
+    const classList = clsx(
+        styles.icon,
+        {
+            [styles[`icon--color_${color}`]] : color,
+            [styles[`icon--hover-color_${hoverColor}`]] : hoverColor,
+            [styles[`icon--hoverable`]] : hoverable,
+        },
+        className
+    );
 
     const iconStyle: React.CSSProperties = {
         width: size,

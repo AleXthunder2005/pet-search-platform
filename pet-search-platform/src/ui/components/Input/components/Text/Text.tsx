@@ -1,8 +1,8 @@
 import React, {useId} from "react";
 import clsx from "clsx";
-import styles from "./styles/Input.module.scss";
+import styles from "./styles/Text.module.scss";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface TextProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
     label?: string;
     id?: string;
     error?: boolean;
@@ -12,7 +12,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     className?: string;
 }
 
-export const Input = ({label, id, error, success, required, icon, className, ...rest }: InputProps) => {
+export const Text = ({label, id, error, success, required, icon, className, ...rest }: TextProps) => {
     const inputClassList = clsx(
         styles['input-box__input'],
         {
@@ -37,10 +37,11 @@ export const Input = ({label, id, error, success, required, icon, className, ...
             {label && (
                 <label htmlFor={inputId}
                        className={labelClassList}>
-                        {label}
+                    {label}
                 </label>)}
             <div className={styles["input-box"]}>
                 <input
+                    type="text"
                     id={inputId}
                     className={inputClassList}
                     required={required}
@@ -52,4 +53,3 @@ export const Input = ({label, id, error, success, required, icon, className, ...
     );
 };
 
-export default Input;

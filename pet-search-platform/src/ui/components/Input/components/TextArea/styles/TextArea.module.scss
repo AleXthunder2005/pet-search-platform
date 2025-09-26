@@ -1,0 +1,29 @@
+@use "../../../styles/inputsMixins" as *;
+
+.textarea-container {
+  @include input-container;
+
+  &__label {
+    @include input-label;
+  }
+}
+
+.textarea {
+  @include input-base;
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  outline: none;
+
+  &:focus {
+    @include input-focused;
+  }
+
+  &:hover:not(:disabled, :focus) {
+    @include input-hovered;
+  }
+
+  &:disabled {
+    @include input-disabled;
+  }
+}

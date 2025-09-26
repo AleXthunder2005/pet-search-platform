@@ -35,4 +35,3 @@ export const TextArea = ({ label, id, required, className, ...rest }: TextAreaPr
     );
 };
 
-export default TextArea;

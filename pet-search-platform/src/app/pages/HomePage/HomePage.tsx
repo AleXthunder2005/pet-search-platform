@@ -1,8 +1,8 @@
 import {Button} from "@components/Button";
 import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
-import {Input} from "@components/Input";
-import {TextArea} from "@components/TextArea";
+import {Text} from "@components/Input";
+import {TextArea} from "@components/Input";
 
 export const HomePage = () => {
 
@@ -17,20 +17,25 @@ export const HomePage = () => {
             <Button isPrimary={true}>Войти</Button>
             <Spinner size={40}/>
             <Spinner size={20} color={'gray'} />
-            <Icon name={"userCircle"} size={80} color={'black'} hoverColor={'black'}/>
+            <Icon name={"userCircle"} size={80} color={'black'} hoverColor={'black'} hoverable/>
             <Icon name={"successCircle"} size={80} color={'black'} hoverColor={'black'}/>
             <Icon name={"errorTriangle"} size={80} color={'black'} hoverColor={'black'}/>
 
-            <Input type={"text"} placeholder={"текст..."} label={"подпись"} required title={"попа"}/>
-            <Input type={"text"} placeholder={"текст..."}/>
-            <Input type={"text"} error={true} icon={errorIcon} placeholder={"текст..."} />
-            <Input type={"text"} error={true} icon={errorIcon} placeholder={"текст..."} label={"подпись"} required/>
-            <Input type={"text"} success={true} icon={successIcon} placeholder={"текст..."}/>
-            <Input type={"text"} success={true} icon={successIcon} placeholder={"текст..."} label={"подпись"}/>
-            <Input type={"text"} disabled label={"подпись"} placeholder={"текст..."}/>
+            <Text placeholder={"текст..."} label={"подпись"} required title={"попа"}/>
+            <Text placeholder={"текст..."}/>
+            <Text error icon={errorIcon} placeholder={"текст..."} />
+            <Text error icon={errorIcon} placeholder={"текст..."} label={"подпись"} required/>
+            <Text success icon={successIcon} placeholder={"текст..."}/>
+            <Text success icon={successIcon} placeholder={"текст..."} label={"подпись"}/>
+            <Text disabled label={"подпись"} placeholder={"текст..."}/>
 
             <TextArea placeholder={"текстареа..."} required label={"label"}/>
             <TextArea placeholder={"текстареа..."} disabled/>
+
+            {/*<Input type={"password"} icon={<Icon name={"petPaw"}/> } placeholder={"текст..."} label={"password"}/>*/}
+            {/*<Input type={"radio"} error icon={errorIcon} placeholder={"текст..."} label={"radio"}/>*/}
+            {/*<Input type={"date"} error icon={errorIcon} placeholder={"текст..."} label={"date"}/>*/}
+
         </div>
     );
 };

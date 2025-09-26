@@ -1,0 +1,80 @@
+// базовый контейнер для любого инпута (input, textarea и т.д.)
+@mixin input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  row-gap: 4px;
+}
+
+// стили для label
+@mixin input-label {
+  font-family: var(--font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-color);
+  padding-left: 5px;
+
+  &--required::after {
+    content: '*';
+    color: var(--primary-orange-color);
+  }
+}
+
+// враппер для инпута + иконки
+@mixin input-box {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+// иконка
+@mixin input-icon {
+  flex: 0 0 auto;
+}
+
+// базовые стили поля
+@mixin input-base {
+  padding: 10px;
+  border: 2px solid var(--primary-light-gray-color);
+  border-radius: var(--input-border-radius);
+  font-size: var(--input-font-size);
+  font-weight: var(--input-font-weight);
+  color: var(--primary-black-color);
+  transition: border-color 0.3s ease;
+  font-family: var(--font-family);
+}
+
+// error
+@mixin input-error {
+  border-color: var(--error-border-color);
+  color: var(--error-text-color);
+  background-color: var(--error-background-color);
+}
+
+// success
+@mixin input-success {
+  border-color: var(--success-border-color);
+  color: var(--success-text-color);
+  background-color: var(--success-background-color);
+}
+
+// disable
+@mixin input-disabled {
+  cursor: not-allowed;
+  background-color: var(--primary-white-color);
+  border-color: var(--primary-light-disabled-color);
+  color: var(--primary-disabled-color);
+}
+
+// focus
+@mixin input-focused {
+  border-color: var(--primary-orange-color);
+}
+
+// hover
+@mixin input-hovered {
+  border-color: var(--primary-hover-light-gray-color);
+}

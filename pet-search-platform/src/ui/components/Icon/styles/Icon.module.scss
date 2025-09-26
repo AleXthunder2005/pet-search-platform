@@ -16,6 +16,12 @@
     }
   }
 
+  &--hoverable {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &--hover-color {
     &_orange:hover {
       color: var(--primary-orange-hover-color);
@@ -28,7 +34,4 @@
     }
   }
 
-  &:hover {
-    cursor: pointer;
-  }
 }

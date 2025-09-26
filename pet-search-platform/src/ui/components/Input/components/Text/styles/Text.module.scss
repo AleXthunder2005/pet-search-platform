@@ -1,4 +1,4 @@
-@use "../styles/mixins.scss" as *;
+@use "../../../styles/inputsMixins" as *;
 
 .input-container {
   @include input-container;
@@ -17,6 +17,7 @@
 
   &__input {
     @include input-base;
+    flex: 1 1 0;
 
     &--error {
       @include input-error;
@@ -28,6 +29,14 @@
 
     &:disabled {
       @include input-disabled;
+    }
+
+    &:focus:not(&--error, &--success) {
+      @include input-focused;
+    }
+
+    &:hover:not(:focus, &--error, &--success, :disabled) {
+      @include input-hovered;
     }
   }
 }

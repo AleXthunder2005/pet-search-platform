@@ -1,1 +1,6 @@
-export {Input} from './Input';
+export {Text} from './components/Text'
+// export {Select} from './components/Select'
+// export {RadioGroup} from './components/RadioGroup'
+// export {Password} from './components/Password'
+// export {Date} from './components/Date'
+export {TextArea} from './components/TextArea'
