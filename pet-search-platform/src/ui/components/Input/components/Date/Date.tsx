@@ -1,17 +1,21 @@
-import React, {useId, useState} from "react";
+import React, {useId} from "react";
 import clsx from "clsx";
-import styles from "./styles/Password.module.scss";
+import styles from "./styles/Date.module.scss";
 import type {InputBaseProps} from "@components/Input/input.types.ts";
-import {Icon} from "@components/Icon";
 
-interface PasswordProps extends InputBaseProps {
+interface TextProps extends InputBaseProps{
     icon?: React.ReactNode;
 }
 
-export const Password = ({label, id, error, success, required, icon, className, ...rest }: PasswordProps) => {
-
-    const [showPassword, setShowPassword] = useState(false);
-
+export const Date = ({
+                         label,
+                         id,
+                         error,
+                         success,
+                         required,
+                         icon,
+                         className,
+                         ...rest }: TextProps) => {
     const inputClassList = clsx(
         styles['input-box__input'],
         {
@@ -31,10 +35,6 @@ export const Password = ({label, id, error, success, required, icon, className, 
     const generatedID = useId();
     const inputId = id ? id : (label ? generatedID : undefined);
 
-    const eyeClick = () => {
-        setShowPassword((showPassword) => !showPassword);
-    }
-
     return (
         <div className={styles['input-container']}>
             {label && (
@@ -44,29 +44,13 @@ export const Password = ({label, id, error, success, required, icon, className, 
                 </label>)}
             <div className={styles["input-box"]}>
                 <input
-                    type={showPassword ? "text" : "password"}
+                    type="date"
                     id={inputId}
                     className={inputClassList}
                     required={required}
                     {...rest}
                 />
                 {icon && <span className={styles['input-box__icon']}>{icon}</span>}
-                {showPassword
-                    ? <span className={styles['input-box__icon']} onClick={eyeClick}>
-                        {<Icon name={"eye"}
-                               hoverable
-                               color={"black"}
-                               hoverColor={"black"}
-                        />}
-                </span>
-                    : <span className={styles['input-box__icon']} onClick={eyeClick}>
-                        {<Icon name={"eyeSlash"}
-                            hoverable
-                            color={"black"}
-                            hoverColor={"black"}
-                         />}
-                       </span>}
-
             </div>
         </div>
     );

@@ -7,7 +7,15 @@ interface TextProps extends InputBaseProps{
     icon?: React.ReactNode;
 }
 
-export const Text = ({label, id, error, success, required, icon, className, ...rest }: TextProps) => {
+export const Text = ({
+                         label,
+                         id,
+                         error,
+                         success,
+                         required,
+                         icon,
+                         className,
+                         ...rest }: TextProps) => {
     const inputClassList = clsx(
         styles['input-box__input'],
         {

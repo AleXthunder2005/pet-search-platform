@@ -3,6 +3,7 @@ import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
 import {Password, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
+import {Date} from "@components/Input";
 
 export const HomePage = () => {
 
@@ -38,9 +39,10 @@ export const HomePage = () => {
             <Password label={"password"} placeholder={"password"} required success icon={successIcon}/>
             <Password label={"password"} placeholder={"password"} required error icon={errorIcon}/>
 
-            {/*<Input type={"password"} icon={<Icon name={"petPaw"}/> } placeholder={"текст..."} label={"password"}/>*/}
-            {/*<Input type={"radio"} error icon={errorIcon} placeholder={"текст..."} label={"radio"}/>*/}
-            {/*<Input type={"date"} error icon={errorIcon} placeholder={"текст..."} label={"date"}/>*/}
+            <Date label={"date"} placeholder={"date"} required/>
+            <Date label={"date"} placeholder={"date"} required disabled/>
+            <Date label={"date"} placeholder={"date"} required success icon={successIcon}/>
+            <Date label={"date"} placeholder={"date"} required error icon={errorIcon}/>
 
         </div>
     );
