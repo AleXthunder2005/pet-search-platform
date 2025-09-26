@@ -1,7 +1,7 @@
 import {Button} from "@components/Button";
 import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
-import {Text} from "@components/Input";
+import {Password, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
 
 export const HomePage = () => {
@@ -20,6 +20,7 @@ export const HomePage = () => {
             <Icon name={"userCircle"} size={80} color={'black'} hoverColor={'black'} hoverable/>
             <Icon name={"successCircle"} size={80} color={'black'} hoverColor={'black'}/>
             <Icon name={"errorTriangle"} size={80} color={'black'} hoverColor={'black'}/>
+            <Icon name={"eye"} size={80} color={'black'} hoverColor={'black'}/>
 
             <Text placeholder={"текст..."} label={"подпись"} required title={"попа"}/>
             <Text placeholder={"текст..."}/>
@@ -31,6 +32,11 @@ export const HomePage = () => {
 
             <TextArea placeholder={"текстареа..."} required label={"label"}/>
             <TextArea placeholder={"текстареа..."} disabled/>
+
+            <Password label={"password"} placeholder={"password"} required/>
+            <Password label={"password"} placeholder={"password"} required disabled/>
+            <Password label={"password"} placeholder={"password"} required success icon={successIcon}/>
+            <Password label={"password"} placeholder={"password"} required error icon={errorIcon}/>
 
             {/*<Input type={"password"} icon={<Icon name={"petPaw"}/> } placeholder={"текст..."} label={"password"}/>*/}
             {/*<Input type={"radio"} error icon={errorIcon} placeholder={"текст..."} label={"radio"}/>*/}
