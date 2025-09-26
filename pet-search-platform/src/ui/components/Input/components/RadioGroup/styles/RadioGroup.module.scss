@@ -1,0 +1,35 @@
+@use "../../../styles/inputsMixins" as *;
+
+.radiogroup {
+  @include input-container;
+
+  &__label {
+    @include input-label;
+  }
+
+  &__radio-buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+}
+
+.radio-buttons {
+  &__label {
+    font-family: var(--font-family);
+    font-size: var(--input-font-size);
+    font-weight: var(--input-font-weight);
+    color: var(--primary-black-color);
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__button {
+    accent-color: var(--primary-orange-color);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

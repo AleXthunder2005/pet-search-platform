@@ -1,6 +1,6 @@
 export {Text} from './components/Text'
 export {Select} from './components/Select'
-// export {RadioGroup} from './components/RadioGroup'
+export {RadioGroup} from './components/RadioGroup'
 // export {Searcher} from './components/Searcher'
 // export {Checkbox} from './components/Checkbox'
 export {Password} from './components/Password'

@@ -1,7 +1,7 @@
 import {Button} from "@components/Button";
 import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
-import {Password, Select, Text} from "@components/Input";
+import {Password, RadioGroup, Select, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
 import {Date} from "@components/Input";
 
@@ -50,6 +50,14 @@ export const HomePage = () => {
             <Select label={"select"} options={options} required disabled/>
             <Select label={"select"} options={options} required icon={successIcon}/>
             <Select label={"select"} options={options} required icon={errorIcon}/>
+
+            <RadioGroup name={'dfd'} label={"Радио группа"} items={[
+                {value: "kfnsj", label: "dsfsf"},
+                {value: "sdd", label: "sdads"},
+                {value: "dsdf", label: "sssss"},
+                {value: "dsfsdf", label: "nnnnn"},
+                {value: "sfddfdf", label: "aaaaa"},
+            ]}/>
         </div>
     );
 };
