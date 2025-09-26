@@ -4,6 +4,7 @@ import {Icon} from "@components/Icon";
 import {Checkbox, Password, RadioGroup, Select, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
 import {Date} from "@components/Input";
+import {Searcher} from "@layouts/Searcher";
 
 export const HomePage = () => {
 
@@ -60,6 +61,8 @@ export const HomePage = () => {
             ]}/>
 
             <Checkbox label={"checkbox"} required/>
+
+            <Searcher/>
         </div>
     );
 };

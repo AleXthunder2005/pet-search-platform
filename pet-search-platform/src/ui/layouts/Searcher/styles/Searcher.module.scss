@@ -1,0 +1,23 @@
+.searcher {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  flex:1;
+
+  &__icon {
+    flex: 0;
+    cursor: pointer;
+  }
+
+  &__text {
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.3s ease, opacity 0.3s ease;
+
+    &--open {
+      max-width: 100%;
+      opacity: 1;
+    }
+  }
+}
