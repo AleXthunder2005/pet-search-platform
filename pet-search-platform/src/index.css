@@ -67,12 +67,5 @@ input {
 }
 
 html {
-  overflow-y: scroll;
   scroll-behavior: smooth;
-}
-
-body {
-  overflow-y: auto;
-  margin-left: calc(100vw - 100%);
-  margin-right: 0;
 }

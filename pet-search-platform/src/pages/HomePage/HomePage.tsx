@@ -7,6 +7,8 @@ import {Date} from "@components/Input";
 import {Searcher} from "@layouts/Searcher";
 import {TabList} from "@layouts/TabList";
 import type {ListItem} from "@layouts/TabList/TabList.tsx";
+import {Modal} from "@components/Modal";
+import {useState} from "react";
 
 export const HomePage = () => {
 
@@ -14,6 +16,8 @@ export const HomePage = () => {
     const successIcon = <Icon name={"successCircle"}/>
 
     const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    const [isModalOpen, setIsModalOpen] = useState(true);
 
     const items: ListItem[] = [
         { label: "Британский кот", count: 10 },
@@ -77,6 +81,12 @@ export const HomePage = () => {
             <Searcher/>
 
             <TabList listTitle={"Вид животного"} items={items} activeItem={items[1]}/>
+
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <Password label={"password"} placeholder={"password"} required/>
+                <Password label={"password"} placeholder={"password"} required/>
+                <Button isPrimary={false}>Выйти</Button>
+            </Modal>
         </div>
     );
 };
