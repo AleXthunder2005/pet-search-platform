@@ -35,6 +35,7 @@
       "@data/*": ["src/data/*"],
       "@pages/*": ["src/pages/*"],
       "@icons/*": ["assets/icons/*"],
+      "@images/*": ["assets/images/*"],
       "@entities/*": ["src/entities/*"]
     },
   },

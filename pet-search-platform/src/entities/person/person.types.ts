@@ -5,5 +5,5 @@ export interface Person {
     email: string;
     phone: string;
     age: number;
-    gender: "male" | "female";
+    gender: "мужской" | "женский";
 }

@@ -7,7 +7,7 @@ interface DateProps extends InputBaseProps{
     icon?: React.ReactNode;
 }
 
-export const Date = ({
+export const DatePicker = ({
                          label,
                          id,
                          error,

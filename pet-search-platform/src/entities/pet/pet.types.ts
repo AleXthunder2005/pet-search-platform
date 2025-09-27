@@ -2,7 +2,7 @@ export interface Pet {
     petId: number;
     petName: string;
     breed: string;
-    sex: "male" | "female";
+    sex: "мужской" | "женский";
     disappearanceDate: Date;
     description?: string;
     imageUrl?: string;

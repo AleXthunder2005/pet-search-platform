@@ -1,1 +1,1 @@
-export {Date} from "./Date";
+export {DatePicker} from "./DatePicker.tsx";

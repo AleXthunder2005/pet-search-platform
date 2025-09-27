@@ -3,7 +3,7 @@ import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
 import {Checkbox, FileUpload, Password, RadioGroup, Select, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
-import {Date} from "@components/Input";
+import {DatePicker} from "@components/Input";
 import {Searcher} from "@layouts/Searcher";
 import {TabList} from "@layouts/TabList";
 import type {ListItem} from "@layouts/TabList/TabList.tsx";
@@ -11,7 +11,7 @@ import {Modal} from "@components/Modal";
 import {useState} from "react";
 import {Notification} from "@components/Notification";
 import {Pagination} from "@components/Pagination";
-import {Link} from "react-router-dom";
+import {PetCard} from "@components/PetCard";
 
 export const HomePage = () => {
 
@@ -20,6 +20,7 @@ export const HomePage = () => {
 
     const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+    // @ts-ignore
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -62,10 +63,10 @@ export const HomePage = () => {
             <Password label={"password"} placeholder={"password"} required success icon={successIcon}/>
             <Password label={"password"} placeholder={"password"} required error icon={errorIcon}/>
 
-            <Date label={"date"} placeholder={"date"} required/>
-            <Date label={"date"} placeholder={"date"} required disabled/>
-            <Date label={"date"} placeholder={"date"} required success icon={successIcon}/>
-            <Date label={"date"} placeholder={"date"} required error icon={errorIcon}/>
+            <DatePicker label={"date"} placeholder={"date"} required/>
+            <DatePicker label={"date"} placeholder={"date"} required disabled/>
+            <DatePicker label={"date"} placeholder={"date"} required success icon={successIcon}/>
+            <DatePicker label={"date"} placeholder={"date"} required error icon={errorIcon}/>
 
             <Select label={"select"} options={options} required/>
             <Select label={"select"} options={options} required disabled/>
@@ -106,6 +107,13 @@ export const HomePage = () => {
             <LinkButton to={"/page"}>link link link</LinkButton>
             <LinkButton to={"/page"} isPrimary>link link link</LinkButton>
 
+            <PetCard name={'Китти'} breed={"Британский кот"}
+                     disappearanceDate={new Date(2025, 8, 27)} city={"Минск"}/>
+            <PetCard name={'Китти'} breed={"Британский кот"}
+                     disappearanceDate={new Date(2025, 8, 23)} city={"Мозырь"} imageUrl={"dsf"}/>
+            <PetCard name={'Барсик'} breed={"Британский кот"}
+                     disappearanceDate={new Date(2025, 8, 21)} city={"Пинск"} imageUrl={"" +
+                "https://camo.githubusercontent.com/1ac4f2e377db1c1a209a4ee1a2c489917e751521a550165b431f64b36e8df6b1/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f37652f31622f66642f37653162666431313931313132353333666539383732656634373339383832332e6a7067"}/>
         </div>
     );
 };
