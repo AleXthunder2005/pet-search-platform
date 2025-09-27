@@ -1,0 +1,29 @@
+.pagination-container {
+  display: flex;
+  gap: 8px;
+
+  &__pagination-button {
+    width: var(--pagination-button-size);
+    height: var(--pagination-button-size);
+    border: 1px solid var(--primary-orange-color);
+    border-radius: 4px;
+    background-color: var(--primary-white-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled, &--active) {
+      border-color: var(--primary-orange-hover-color);
+      color: var(--primary-orange-hover-color);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &--active {
+      background-color: var(--primary-orange-color);
+      color: var(--primary-white-color);
+    }
+  }
+}

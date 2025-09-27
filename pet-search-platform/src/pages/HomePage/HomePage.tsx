@@ -10,6 +10,7 @@ import type {ListItem} from "@layouts/TabList/TabList.tsx";
 import {Modal} from "@components/Modal";
 import {useState} from "react";
 import {Notification} from "@components/Notification";
+import {Pagination} from "@components/Pagination";
 
 export const HomePage = () => {
 
@@ -19,6 +20,7 @@ export const HomePage = () => {
     const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
     const [isModalOpen, setIsModalOpen] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const items: ListItem[] = [
         { label: "Британский кот", count: 10 },
@@ -92,6 +94,8 @@ export const HomePage = () => {
             <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"error"}/>
             <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"success"}/>
             <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"info"}/>
+
+            <Pagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage}/>
         </div>
     );
 };

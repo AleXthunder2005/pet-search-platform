@@ -50,6 +50,8 @@
   --notification-success-background-color: var(--success-text-color);
   --notification-info-background-color: var(--primary-white-color);
 
+
+  --pagination-button-size: 36px;
 }
 
 * {
