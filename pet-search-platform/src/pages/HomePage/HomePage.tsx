@@ -1,4 +1,4 @@
-import {Button} from "@components/Button";
+import {Button, LinkButton} from "@components/Button";
 import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
 import {Checkbox, FileUpload, Password, RadioGroup, Select, Text} from "@components/Input";
@@ -11,6 +11,7 @@ import {Modal} from "@components/Modal";
 import {useState} from "react";
 import {Notification} from "@components/Notification";
 import {Pagination} from "@components/Pagination";
+import {Link} from "react-router-dom";
 
 export const HomePage = () => {
 
@@ -101,6 +102,10 @@ export const HomePage = () => {
             <FileUpload label={"Картинки котов"} disabled/>
             <FileUpload label={"Картинки котов"} success/>
             <FileUpload label={"Картинки котов"} error/>
+
+            <LinkButton to={"/page"}>link link link</LinkButton>
+            <LinkButton to={"/page"} isPrimary>link link link</LinkButton>
+
         </div>
     );
 };
