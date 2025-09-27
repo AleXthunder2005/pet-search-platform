@@ -9,6 +9,7 @@ import {TabList} from "@layouts/TabList";
 import type {ListItem} from "@layouts/TabList/TabList.tsx";
 import {Modal} from "@components/Modal";
 import {useState} from "react";
+import {Notification} from "@components/Notification";
 
 export const HomePage = () => {
 
@@ -82,11 +83,15 @@ export const HomePage = () => {
 
             <TabList listTitle={"Вид животного"} items={items} activeItem={items[1]}/>
 
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <Modal isOpen={false} onClose={() => setIsModalOpen(false)}>
                 <Password label={"password"} placeholder={"password"} required/>
                 <Password label={"password"} placeholder={"password"} required/>
                 <Button isPrimary={false}>Выйти</Button>
             </Modal>
+
+            <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"error"}/>
+            <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"success"}/>
+            <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"info"}/>
         </div>
     );
 };

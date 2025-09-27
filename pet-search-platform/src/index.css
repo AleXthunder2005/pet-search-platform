@@ -45,6 +45,10 @@
   --tabs-title-font-weight: 700;
   --tabs-border-radius: 5px;
 
+  --notification-font-size: 14px;
+  --notification-error-background-color: var(--error-text-color);
+  --notification-success-background-color: var(--success-text-color);
+  --notification-info-background-color: var(--primary-white-color);
 
 }
 
