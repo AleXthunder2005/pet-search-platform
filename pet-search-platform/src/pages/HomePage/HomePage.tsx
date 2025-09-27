@@ -1,7 +1,7 @@
 import {Button} from "@components/Button";
 import {Spinner} from "@components/Spinner";
 import {Icon} from "@components/Icon";
-import {Checkbox, Password, RadioGroup, Select, Text} from "@components/Input";
+import {Checkbox, FileUpload, Password, RadioGroup, Select, Text} from "@components/Input";
 import {TextArea} from "@components/Input";
 import {Date} from "@components/Input";
 import {Searcher} from "@layouts/Searcher";
@@ -93,9 +93,14 @@ export const HomePage = () => {
 
             <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"error"}/>
             <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"success"}/>
-            <Notification message={"Twenty on pilots Twenty on pilots Twenty on pilots Twenty on pilots"} status={"info"}/>
 
             <Pagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage}/>
+
+            <FileUpload label={"Картинки котов"} />
+            <FileUpload label={"Картинки котов"} required/>
+            <FileUpload label={"Картинки котов"} disabled/>
+            <FileUpload label={"Картинки котов"} success/>
+            <FileUpload label={"Картинки котов"} error/>
         </div>
     );
 };

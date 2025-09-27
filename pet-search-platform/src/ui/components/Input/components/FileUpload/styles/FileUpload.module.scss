@@ -1,0 +1,60 @@
+@use "../../../styles/inputsMixins" as *;
+
+.input-container {
+  @include input-container;
+
+  &__label {
+    @include input-label;
+  }
+}
+
+.input-box {
+  @include input-box;
+
+  &__file {
+    @include input-base;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100%;
+    background-color: var(--primary-white-color);
+    gap: 10px;
+
+    &-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+
+    &-icon {
+      flex: 0;
+    }
+
+    &-input {
+      position: absolute;
+      opacity: 0;
+      width: 0.1px;
+      height: 0.1px;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    &--error {
+      @include input-error;
+    }
+
+    &--success {
+      @include input-success;
+    }
+
+    &--disabled {
+      @include input-disabled;
+    }
+
+    &:hover:not(&--error, &--success, &--disabled) {
+      @include input-hovered;
+    }
+  }
+}
