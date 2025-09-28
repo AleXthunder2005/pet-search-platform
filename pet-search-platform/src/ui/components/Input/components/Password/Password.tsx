@@ -8,14 +8,14 @@ interface PasswordProps extends InputBaseProps {
     icon?: React.ReactNode;
 }
 
-export const Password = ({label, id, errorMessage, success, required, icon, className, ...rest }: PasswordProps) => {
+export const Password = ({label, id, error, errorMessage, success, required, icon, className, ...rest }: PasswordProps) => {
 
     const [showPassword, setShowPassword] = useState(false);
 
     const inputClassList = clsx(
         styles['input-box__input'],
         {
-            [styles["input-box__input--error"]]: errorMessage,
+            [styles["input-box__input--error"]]: error || errorMessage,
             [styles["input-box__input--success"]]: success,
         },
         className

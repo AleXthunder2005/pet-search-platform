@@ -12,6 +12,7 @@ interface FileUploadProps extends InputBaseProps {
 export const FileUpload = ({
                                label,
                                id,
+                               error,
                                errorMessage,
                                success,
                                required,
@@ -39,7 +40,7 @@ export const FileUpload = ({
     const inputClassList = clsx(
         styles["input-box__file"],
         {
-            [styles["input-box__file--error"]]: errorMessage,
+            [styles["input-box__file--error"]]: error || errorMessage,
             [styles["input-box__file--success"]]: success,
             [styles["input-box__file--disabled"]]: disabled,
         },

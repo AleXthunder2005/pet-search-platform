@@ -13,6 +13,7 @@ export const Text = ({
                          id,
                          type = "text",
                          errorMessage,
+                         error,
                          success,
                          required,
                          icon,
@@ -21,7 +22,7 @@ export const Text = ({
     const inputClassList = clsx(
         styles['input-box__input'],
         {
-            [styles["input-box__input--error"]]: errorMessage,
+            [styles["input-box__input--error"]]: error || errorMessage,
             [styles["input-box__input--success"]]: success,
         },
         className

@@ -10,6 +10,7 @@ interface DateProps extends InputBaseProps{
 export const DatePicker = ({
                          label,
                          id,
+                         error,
                          errorMessage,
                          success,
                          required,
@@ -19,7 +20,7 @@ export const DatePicker = ({
     const inputClassList = clsx(
         styles['input-box__input'],
         {
-            [styles["input-box__input--error"]]: errorMessage,
+            [styles["input-box__input--error"]]: error || errorMessage,
             [styles["input-box__input--success"]]: success,
         },
         className
