@@ -5,11 +5,13 @@ import type {InputBaseProps} from "@components/Input/input.types.ts";
 
 interface TextProps extends InputBaseProps{
     icon?: React.ReactNode;
+    type?: "text" | "tel" | "email";
 }
 
 export const Text = ({
                          label,
                          id,
+                         type = "text",
                          error,
                          success,
                          required,
@@ -44,7 +46,7 @@ export const Text = ({
                 </label>)}
             <div className={styles["input-box"]}>
                 <input
-                    type="text"
+                    type={type}
                     id={inputId}
                     className={inputClassList}
                     required={required}
