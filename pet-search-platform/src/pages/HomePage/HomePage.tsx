@@ -12,6 +12,7 @@ import {useState} from "react";
 import {Notification} from "@components/Notification";
 import {Pagination} from "@components/Pagination";
 import {PetCard} from "@components/PetCard";
+import {AboutPetModal} from "@layouts/AboutPetModal";
 
 export const HomePage = () => {
 
@@ -107,13 +108,13 @@ export const HomePage = () => {
             <LinkButton to={"/page"}>link link link</LinkButton>
             <LinkButton to={"/page"} isPrimary>link link link</LinkButton>
 
-            <PetCard name={'Китти'} breed={"Британский кот"}
+            <PetCard petId={1} name={'Китти'} breed={"Британский кот"}
                      disappearanceDate={new Date(2025, 8, 27)} city={"Минск"}/>
-            <PetCard name={'Китти'} breed={"Британский кот"}
+            <PetCard petId={2} name={'Китти'} breed={"Британский кот"}
                      disappearanceDate={new Date(2025, 8, 23)} city={"Мозырь"} imageUrl={"dsf"}/>
-            <PetCard name={'Барсик'} breed={"Британский кот"}
-                     disappearanceDate={new Date(2025, 8, 21)} city={"Пинск"} imageUrl={"" +
-                "https://camo.githubusercontent.com/1ac4f2e377db1c1a209a4ee1a2c489917e751521a550165b431f64b36e8df6b1/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f37652f31622f66642f37653162666431313931313132353333666539383732656634373339383832332e6a7067"}/>
+            <PetCard petId={3} name={'Барсик'} breed={"Британский кот"}
+                     disappearanceDate={new Date(2025, 8, 21)} city={"Пинск"} imageUrl={"https://camo.githubusercontent.com/1ac4f2e377db1c1a209a4ee1a2c489917e751521a550165b431f64b36e8df6b1/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f37652f31622f66642f37653162666431313931313132353333666539383732656634373339383832332e6a7067"}/>
+            <AboutPetModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} petId={1}/>
         </div>
     );
 };

@@ -10,7 +10,7 @@
   transition: box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0 4px 8px var(--shadow-color);
+    box-shadow: 0px 0px 10px var(--shadow-color);
     cursor: pointer;
 
     .pet-card__name {

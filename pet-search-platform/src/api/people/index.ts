@@ -1,0 +1,1 @@
+export {fetchPersonById} from './fetchPeople.ts'

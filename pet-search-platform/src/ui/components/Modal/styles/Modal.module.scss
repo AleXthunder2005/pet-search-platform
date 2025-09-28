@@ -24,6 +24,8 @@
     background-color: var(--primary-white-color);
     border-radius: 8px;
     position: relative;
+    min-height: 60%;
+    min-width: 30%;
     max-width: 90%;
     max-height: 90%;
     overflow: hidden;
@@ -51,8 +53,8 @@
 
   &__close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 8px;
     font-size: 24px;
     cursor: pointer;
     color: var(--primary-black-color);

@@ -1,10 +1,11 @@
 import styles from './styles/PetCard.module.scss'
 import clsx from "clsx";
-import { timeSince } from '@entities/ad/helpers/timeSince.ts';
 import NoImageSVG from '@images/no-image.svg?react';
 import {ImageWithLoader} from "@components/ImageWithLoader/ImageWithLoader.tsx";
+import {timeSince} from "@entities/pet/helpers/timeSince.ts";
 
 interface PetCardProps {
+    petId: number;
     name: string;
     breed: string;
     imageUrl?: string;

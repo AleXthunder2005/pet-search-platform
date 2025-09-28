@@ -22,6 +22,8 @@ export default defineConfig({
       '@icons': path.resolve(__dirname, './assets/icons'),
       '@entities': path.resolve(__dirname, './src/entities'),
       '@images': path.resolve(__dirname, './assets/images'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@api': path.resolve(__dirname, './src/api'),
     },
   },
 })
