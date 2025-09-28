@@ -1,0 +1,26 @@
+.login-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  font-family: var(--font-family);
+
+  &__title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--primary-black-color);
+    margin-bottom: 12px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
