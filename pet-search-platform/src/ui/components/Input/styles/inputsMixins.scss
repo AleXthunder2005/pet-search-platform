@@ -54,6 +54,13 @@
   background-color: var(--error-background-color);
 }
 
+@mixin input-error-message {
+  font-family: var(--font-family);
+  color: var(--error-text-color);
+  font-size: var(--error-message-font-size);
+  padding-left: var(--error-message-padding-left);
+}
+
 // success
 @mixin input-success {
   border-color: var(--success-border-color);

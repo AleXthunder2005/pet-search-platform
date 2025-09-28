@@ -50,8 +50,8 @@ export const HomePage = () => {
 
             <Text placeholder={"текст..."} label={"подпись"} required title={"fff"} list={"data"}/>
             <Text placeholder={"текст..."}/>
-            <Text error icon={errorIcon} placeholder={"текст..."} />
-            <Text error icon={errorIcon} placeholder={"текст..."} label={"подпись"} required/>
+            <Text errorMessage={"аа аааа ошибкаааааааа"} icon={errorIcon} placeholder={"текст..."} />
+            <Text errorMessage={"аа аааа ошибкаааааааа"} icon={errorIcon} placeholder={"текст..."} label={"подпись"} required/>
             <Text success icon={successIcon} placeholder={"текст..."}/>
             <Text success icon={successIcon} placeholder={"текст..."} label={"подпись"}/>
             <Text disabled label={"подпись"} placeholder={"текст..."}/>
@@ -62,12 +62,12 @@ export const HomePage = () => {
             <Password label={"password"} placeholder={"password"} required/>
             <Password label={"password"} placeholder={"password"} required disabled/>
             <Password label={"password"} placeholder={"password"} required success icon={successIcon}/>
-            <Password label={"password"} placeholder={"password"} required error icon={errorIcon}/>
+            <Password label={"password"} placeholder={"password"} required errorMessage={"Неправильный пароль"} icon={errorIcon}/>
 
             <DatePicker label={"date"} placeholder={"date"} required/>
             <DatePicker label={"date"} placeholder={"date"} required disabled/>
             <DatePicker label={"date"} placeholder={"date"} required success icon={successIcon}/>
-            <DatePicker label={"date"} placeholder={"date"} required error icon={errorIcon}/>
+            <DatePicker label={"date"} placeholder={"date"} required errorMessage={"Некорректная дата"} icon={errorIcon}/>
 
             <Select label={"select"} options={options} required/>
             <Select label={"select"} options={options} required disabled/>
@@ -103,7 +103,7 @@ export const HomePage = () => {
             <FileUpload label={"Картинки котов"} required/>
             <FileUpload label={"Картинки котов"} disabled/>
             <FileUpload label={"Картинки котов"} success/>
-            <FileUpload label={"Картинки котов"} error/>
+            <FileUpload label={"Картинки котов"} errorMessage={"Ошибка загрузки файлов"}/>
 
             <LinkButton to={"/page"}>link link link</LinkButton>
             <LinkButton to={"/page"} isPrimary>link link link</LinkButton>
@@ -114,7 +114,9 @@ export const HomePage = () => {
                      disappearanceDate={new Date(2025, 8, 23)} city={"Мозырь"} imageUrl={"dsf"}/>
             <PetCard petId={3} name={'Барсик'} breed={"Британский кот"}
                      disappearanceDate={new Date(2025, 8, 21)} city={"Пинск"} imageUrl={"https://camo.githubusercontent.com/1ac4f2e377db1c1a209a4ee1a2c489917e751521a550165b431f64b36e8df6b1/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f37652f31622f66642f37653162666431313931313132353333666539383732656634373339383832332e6a7067"}/>
-            <AboutPetModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} petId={1}/>
+            <AboutPetModal isOpen={false} onClose={() => setIsModalOpen(false)} petId={1}/>
+
+
         </div>
     );
 };

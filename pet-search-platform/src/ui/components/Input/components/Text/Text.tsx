@@ -12,7 +12,7 @@ export const Text = ({
                          label,
                          id,
                          type = "text",
-                         error,
+                         errorMessage,
                          success,
                          required,
                          icon,
@@ -21,7 +21,7 @@ export const Text = ({
     const inputClassList = clsx(
         styles['input-box__input'],
         {
-            [styles["input-box__input--error"]]: error,
+            [styles["input-box__input--error"]]: errorMessage,
             [styles["input-box__input--success"]]: success,
         },
         className
@@ -54,6 +54,7 @@ export const Text = ({
                 />
                 {icon && <span className={styles['input-box__icon']}>{icon}</span>}
             </div>
+            <span className={styles["input-container__error-message"]}>{errorMessage}</span>
         </div>
     );
 };

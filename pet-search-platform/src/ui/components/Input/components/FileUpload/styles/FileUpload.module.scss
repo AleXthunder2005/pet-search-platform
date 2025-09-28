@@ -6,6 +6,10 @@
   &__label {
     @include input-label;
   }
+
+  &__error-message {
+    @include input-error-message;
+  }
 }
 
 .input-box {
