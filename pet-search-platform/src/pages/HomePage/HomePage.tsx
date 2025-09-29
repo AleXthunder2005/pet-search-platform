@@ -14,6 +14,7 @@ import {Pagination} from "@components/Pagination";
 import {PetCard} from "@components/PetCard";
 import {AboutPetModal} from "@layouts/AboutPetModal";
 import {LoginModal} from "@layouts/LoginModal/LoginModal.tsx";
+import {RegisterModal} from "@layouts/RegisterModal/RegisterModal.tsx";
 
 export const HomePage = () => {
 
@@ -118,6 +119,7 @@ export const HomePage = () => {
             <AboutPetModal isOpen={false} onClose={() => setIsModalOpen(false)} petId={1}/>
             <LoginModal isOpen={false} onClose={() => setIsModalOpen(false)}/>
 
+            <RegisterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
         </div>
     );
 };
