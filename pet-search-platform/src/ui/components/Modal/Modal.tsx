@@ -37,12 +37,12 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     return createPortal(
         <div
             className={modalOverlayClassList}
-            onClick={onClose}
+            onMouseDown={onClose}
             onTransitionEnd={handleTransitionEnd}
         >
             <div
                 className={modalClassList}
-                onClick={(e) => e.stopPropagation()}
+                onMouseDown={(e) => e.stopPropagation()}
             >
                 <div className={styles["modal__content"]}>
                     <button className={styles["modal__close"]} onClick={onClose}>
