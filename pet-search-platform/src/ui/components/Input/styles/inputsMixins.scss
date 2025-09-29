@@ -61,6 +61,13 @@
   padding-left: var(--error-message-padding-left);
 }
 
+@mixin input-success-message {
+  font-family: var(--font-family);
+  color: var(--success-text-color);
+  font-size: var(--success-message-font-size);
+  padding-left: var(--success-message-padding-left);
+}
+
 // success
 @mixin input-success {
   border-color: var(--success-border-color);

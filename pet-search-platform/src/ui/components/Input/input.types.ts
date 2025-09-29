@@ -6,6 +6,7 @@ export interface InputBaseProps extends Omit<React.InputHTMLAttributes<HTMLInput
     errorMessage?: string;
     error?: boolean;
     success?: boolean;
+    successMessage?: string;
     required?: boolean;
     className?: string;
 }

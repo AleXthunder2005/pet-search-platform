@@ -13,6 +13,7 @@ export const DatePicker = ({
                          error,
                          errorMessage,
                          success,
+                         successMessage,
                          required,
                          icon,
                          className,
@@ -21,7 +22,7 @@ export const DatePicker = ({
         styles['input-box__input'],
         {
             [styles["input-box__input--error"]]: error || errorMessage,
-            [styles["input-box__input--success"]]: success,
+            [styles["input-box__input--success"]]: success || successMessage,
         },
         className
     );
@@ -53,7 +54,8 @@ export const DatePicker = ({
                 />
                 {icon && <span className={styles['input-box__icon']}>{icon}</span>}
             </div>
-            <span className={styles["input-container__error-message"]}>{errorMessage}</span>
+            {errorMessage && <span className={styles["input-container__error-message"]}>{errorMessage}</span>}
+            {successMessage && <span className={styles["input-container__success-message"]}>{successMessage}</span>}
         </div>
     );
 };

@@ -15,6 +15,7 @@ export const FileUpload = ({
                                error,
                                errorMessage,
                                success,
+                               successMessage,
                                required,
                                className,
                                disabled,
@@ -41,7 +42,7 @@ export const FileUpload = ({
         styles["input-box__file"],
         {
             [styles["input-box__file--error"]]: error || errorMessage,
-            [styles["input-box__file--success"]]: success,
+            [styles["input-box__file--success"]]: success || successMessage,
             [styles["input-box__file--disabled"]]: disabled,
         },
         className
@@ -73,7 +74,8 @@ export const FileUpload = ({
                     required={required}
                 />
             </div>
-            <span className={styles["input-container__error-message"]}>{errorMessage}</span>
+            {errorMessage && <span className={styles["input-container__error-message"]}>{errorMessage}</span>}
+            {successMessage && <span className={styles["input-container__success-message"]}>{successMessage}</span>}
         </div>
     );
 };

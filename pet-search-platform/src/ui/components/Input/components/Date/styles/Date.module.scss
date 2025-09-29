@@ -10,6 +10,10 @@
   &__error-message {
     @include input-error-message;
   }
+
+  &__success-message {
+    @include input-success-message;
+  }
 }
 
 .input-box {
