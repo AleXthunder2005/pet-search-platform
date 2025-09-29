@@ -8,7 +8,7 @@ export const Header = () => {
     return (
         <header className={styles["header"]}>
             <div className={styles["header__logo"]}>
-                <Icon name="petPaw" size={60} color="orange" />
+                <Icon name="petPaw" size={50} color="orange" />
             </div>
 
             <nav className={styles["header__nav"]}>
@@ -24,16 +24,21 @@ export const Header = () => {
                                 )
                             }
                         >
-                            Главная
+                            Потеряшки
                         </NavLink>
                     </li>
                     <li className={styles["nav-list__item"]}>
-                        <a
-                            href="#pets"
-                            className={styles["nav-list__item-link"]}
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) =>
+                                clsx(
+                                    styles["nav-list__item-link"],
+                                    isActive && styles["nav-list__item-link--active"]
+                                )
+                            }
                         >
-                            Потеряшки
-                        </a>
+                            О проекте
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

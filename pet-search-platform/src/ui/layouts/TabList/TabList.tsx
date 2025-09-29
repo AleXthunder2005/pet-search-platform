@@ -19,6 +19,11 @@ export const TabList = ({
                             activeItem,
                             onItemClick
                         }: ListProps) => {
+
+    if (!items.length) {
+        return null;
+    }
+
     return (
         <div className={styles['tab-list-container']}>
             <p className={styles['tab-list-container__title']}>{listTitle}</p>

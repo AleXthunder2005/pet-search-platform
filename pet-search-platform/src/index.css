@@ -30,6 +30,9 @@
   --error-background-color: #ffeaea;
 
   --font-family: Tahoma, sans-serif;
+  --nav-font-size: 18px;
+  --nav-font-weight: 500;
+
   --input-font-size: 16px;
   --input-font-weight: 500;
   --input-border-radius: 8px;
@@ -57,6 +60,8 @@
   --error-message-padding-left: 10px;
   --success-message-font-size: 15px;
   --success-message-padding-left: 10px;
+
+  --wrapper-width: 1280px;
 }
 
 * {
