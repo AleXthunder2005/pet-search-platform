@@ -6,12 +6,14 @@ interface NotificationProps {
     message: string;
     status: "success" | "error" | "info";
     duration?: number;
+    onClose?: () => void;
 }
 
 export const Notification = ({
                                  message,
                                  status,
                                  duration = 3000,
+                                 onClose,
                              }: NotificationProps) => {
     const [closing, setClosing] = useState(false);
     const timerRef = useRef<number>(null);
@@ -35,6 +37,7 @@ export const Notification = ({
 
     const handleClose = () => {
         setClosing(true);
+        if (onClose) onClose();
     };
 
     return (
