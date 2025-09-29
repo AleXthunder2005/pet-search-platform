@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { Modal } from "@components/Modal";
 import { Button } from "@components/Button";
-import { Notification } from "@components/Notification";
+import { Password, Text } from "@components/Input";
 import { useLogin } from "@hooks/useLogin.ts";
 import styles from "./styles/LoginModal.module.scss";
-import { Password } from "@components/Input";
-import { Text } from "@components/Input";
-import React from "react";
 import type { LoginError } from "@api/errors/loginError.ts";
+import { notify } from "@layouts/GlobalNotificationContainer/GlobalNotificationContainer.tsx";
 
 interface LoginModalProps {
     isOpen: boolean;
@@ -15,16 +13,35 @@ interface LoginModalProps {
     onSuccess?: (user: unknown) => void;
 }
 
+interface LoginFormInputs {
+    email: string;
+    password: string;
+}
+
 export const LoginModal = ({ isOpen, onClose, onSuccess }: LoginModalProps) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+    const {
+        control,
+        handleSubmit,
+        setError,
+        clearErrors,
+        formState: { errors }
+    } = useForm<LoginFormInputs>({
+        mode: "onSubmit",
+        reValidateMode: "onSubmit",
+    });
 
-    const { mutate, isPending, error } = useLogin();
+    const { mutate, isPending } = useLogin();
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    const onSubmit = ({ email, password }: LoginFormInputs) => {
+        if (!email || !password) {
+            notify("Проверьте корректность полей", "error");
+
+            if (!email) setError("email", { type: "manual", message: "Введите email" });
+            if (!password) setError("password", { type: "manual", message: "Введите пароль" });
+
+            return;
+        }
+
         mutate(
             { email, password },
             {
@@ -35,39 +52,57 @@ export const LoginModal = ({ isOpen, onClose, onSuccess }: LoginModalProps) => {
                 onError: (err: LoginError) => {
                     switch (err.type) {
                         case "userNotFound":
-                            setEmailError(err.message);
+                            setError("email", { type: "manual", message: err.message });
                             break;
                         case "invalidPassword":
-                            setPasswordError(err.message);
+                            setError("password", { type: "manual", message: err.message });
                             break;
+                        default:
+                            notify(err.message, "error");
                     }
                 },
             }
         );
     };
 
+    const onInvalid = () => {
+        notify("Проверьте корректность полей", "error");
+    };
+
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <div className={styles["login-modal"]}>
                 <h2 className={styles["login-modal__title"]}>Вход</h2>
-                <form className={styles["login-modal__form"]} onSubmit={handleSubmit}>
-                    <Text
-                        label="Email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        onFocus={() => setEmailError("")}
-                        required
-                        errorMessage={emailError}
+                <form className={styles["login-modal__form"]} onSubmit={handleSubmit(onSubmit, onInvalid)}>
+                    <Controller
+                        name="email"
+                        control={control}
+                        rules={{ required: "Введите email" }}
+                        render={({ field }) => (
+                            <Text
+                                label="Email"
+                                type="email"
+                                {...field}
+                                onFocus={() => clearErrors("email")}
+                                errorMessage={errors.email?.message}
+                            />
+                        )}
                     />
-                    <Password
-                        label="Пароль"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        onFocus={() => setPasswordError("")}
-                        required
-                        errorMessage={passwordError}
+
+                    <Controller
+                        name="password"
+                        control={control}
+                        rules={{ required: "Введите пароль" }}
+                        render={({ field }) => (
+                            <Password
+                                label="Пароль"
+                                {...field}
+                                onFocus={() => clearErrors("password")}
+                                errorMessage={errors.password?.message}
+                            />
+                        )}
                     />
+
                     <Button
                         type="submit"
                         disabled={isPending}
@@ -77,10 +112,6 @@ export const LoginModal = ({ isOpen, onClose, onSuccess }: LoginModalProps) => {
                     </Button>
                 </form>
             </div>
-
-            {error && error.type === "network" && (
-                <Notification message={error.message} status="error" />
-            )}
         </Modal>
     );
 };
