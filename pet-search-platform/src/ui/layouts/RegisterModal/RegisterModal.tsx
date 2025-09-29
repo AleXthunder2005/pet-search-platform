@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { Modal } from "@components/Modal";
 import { Button } from "@components/Button";
 import { Text } from "@components/Input";
 import { Password } from "@components/Input";
 import styles from "./styles/RegisterModal.module.scss";
-import React from "react";
 import { useRegister } from "@hooks/useRegister";
 import { isValidEmail } from "@helpers/isValidEmail";
-import {
-    validatePasswordRules,
-    passwordStrengthLabel,
-} from "@helpers/validatePasswordRules";
-import {notify} from "@layouts/GlobalNotificationContainer/GlobalNotificationContainer.tsx";
-import type {RegisterError} from "@api/errors/registerError.ts";
+import { validatePasswordRules, passwordStrengthLabel } from "@helpers/validatePasswordRules";
+import { notify } from "@layouts/GlobalNotificationContainer/GlobalNotificationContainer.tsx";
+import type { RegisterError } from "@api/errors/registerError.ts";
+
+type FormValues = {
+    email: string;
+    password: string;
+    repeat: string;
+};
 
 interface RegisterModalProps {
     isOpen: boolean;
@@ -21,141 +23,130 @@ interface RegisterModalProps {
 }
 
 export const RegisterModal = ({ isOpen, onClose, onSuccess }: RegisterModalProps) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [repeat, setRepeat] = useState("");
+    const {
+        control,
+        handleSubmit,
+        watch,
+        setError,
+        reset,
+        trigger,
+        formState: { errors, isSubmitting },
+    } = useForm<FormValues>({
+        defaultValues: { email: "", password: "", repeat: "" },
+        mode: "onChange",
+        reValidateMode: "onChange",
+    });
 
-    const [emailError, setEmailError] = useState("");
-    const [passwordError, setPasswordError] = useState("");
-    const [repeatError, setRepeatError] = useState("");
+    const { mutateAsync, isPending } = useRegister();
 
-    const { mutate, isPending } = useRegister();
-
-    const handleEmailChange = (val: string) => {
-        setEmail(val);
-        if (!isValidEmail(val)) {
-            setEmailError("Некорректный email");
-        } else {
-            setEmailError("");
-        }
-    };
-
-    const handlePasswordChange = (val: string) => {
-        setPassword(val);
-
-        if (!validatePasswordRules(val).valid) {
-            setPasswordError("Пароль должен содержать минимум 8 символов");
-        } else {
-            setPasswordError("");
-        }
-
-        if (repeat) {
-            if (val !== repeat) {
-                setRepeatError("Пароли не совпадают");
-            } else {
-                setRepeatError("");
+    const onSubmit = async (data: FormValues) => {
+        try {
+            const user = await mutateAsync({ email: data.email.trim(), password: data.password.trim() });
+            notify("Регистрация прошла успешно", "success");
+            reset();
+            onSuccess?.(user);
+            onClose();
+        } catch (err: any) {
+            const regErr = err as RegisterError | Error;
+            if ((regErr as RegisterError).type === "emailIsAlreadyExists") {
+                setError("email", { type: "server", message: (regErr as RegisterError).message });
+                return;
             }
+
+            notify(regErr.message || "Ошибка сети", "error");
         }
     };
 
-    const handleRepeatChange = (val: string) => {
-        setRepeat(val);
-
-        if (!val) {
-            setRepeatError("");
-            return;
-        }
-
-        if (password && val !== password) {
-            setRepeatError("Пароли не совпадают");
-        } else {
-            setRepeatError("");
-        }
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-
-        if (!isValidEmail(email)) {
-            setEmailError("Некорректный email");
-            return;
-        }
-
-        if (!validatePasswordRules(password).valid) {
-            setPasswordError("Пароль должен содержать минимум 8 символов");
-            return;
-        }
-
-        if (password !== repeat) {
-            setRepeatError("Пароли не совпадают");
-            return;
-        }
-
-        mutate(
-            { email: email.trim(), password: password.trim() },
-            {
-                onSuccess: (user) => {
-                    onSuccess?.(user);
-                    setEmail("");
-                    setPassword("");
-                    setRepeat("");
-                    notify("Регистрация прошла успешно", "success");
-                    onClose();
-                },
-                onError: (err: RegisterError) => {
-                    notify(err.message , "error");
-                },
-            }
-        );
+    const onInvalid = () => {
+        notify("Проверьте корректность полей", "error");
     };
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <div className={styles["register-modal"]}>
                 <h2 className={styles["register-modal__title"]}>Регистрация</h2>
-                <form className={styles["register-modal__form"]} onSubmit={handleSubmit}>
-                    <Text
-                        label="Email"
-                        value={email}
-                        onChange={(e) => handleEmailChange(e.target.value)}
-                        onFocus={() => setEmailError("")}
-                        required
-                        errorMessage={emailError}
+
+                <form className={styles["register-modal__form"]} onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
+                    <Controller
+                        control={control}
+                        name="email"
+                        rules={{
+                            required: "Введите email",
+                            validate: (v) => isValidEmail(v) || "Некорректный email",
+                        }}
+                        render={({ field }) => (
+                            <Text
+                                label="Email"
+                                value={field.value}
+                                onChange={(e) => field.onChange(e.target.value)}
+                                required
+                                errorMessage={field.value ? (errors.email?.message) : ""}
+                            />
+                        )}
                     />
 
-                    <Password
-                        label="Пароль"
-                        value={password}
-                        onChange={(e) => handlePasswordChange(e.target.value)}
-                        onFocus={() => setPasswordError("")}
-                        required
-                        errorMessage={passwordError}
-                        successMessage={
-                            validatePasswordRules(password).valid
-                                ? `Пароль подходит — ${passwordStrengthLabel(password).label}`
-                                : ""
-                        }
+                    <Controller
+                        control={control}
+                        name="password"
+                        rules={{
+                            required: "Введите пароль",
+                            validate: (v) =>
+                                validatePasswordRules(v).valid ||
+                                "Пароль должен содержать минимум 8 символов",
+                        }}
+                        render={({ field }) => (
+                            <Password
+                                label="Пароль"
+                                value={field.value}
+                                onChange={(e) => {
+                                    field.onChange(e.target.value);
+                                    trigger("repeat");
+                                }}
+                                required
+                                errorMessage={field.value ? (errors.password?.message) : undefined}
+                                successMessage={
+                                    field.value && !errors.password
+                                        ? `Пароль подходит — ${passwordStrengthLabel(field.value).label}`
+                                        : ""
+                                }
+                            />
+                        )}
                     />
 
-                    <Password
-                        label="Повторите пароль"
-                        value={repeat}
-                        onChange={(e) => handleRepeatChange(e.target.value)}
-                        onFocus={() => setRepeatError("")}
-                        required
-                        errorMessage={repeatError}
-                        successMessage={repeat && repeat === password ? "Пароли совпадают" : ""}
+                    <Controller
+                        control={control}
+                        name="repeat"
+                        rules={{
+                            required: "Повторите пароль",
+                            validate: (v) => v === watch("password") || "Пароли не совпадают",
+                        }}
+                        render={({ field }) => (
+                            <Password
+                                label="Повторите пароль"
+                                value={field.value}
+                                onChange={(e) => {
+                                    field.onChange(e.target.value);
+                                }}
+                                required
+                                errorMessage={field.value ? (errors.repeat?.message) : ""}
+                                successMessage={
+                                    field.value && !errors.repeat && field.value === watch("password")
+                                        ? "Пароли совпадают"
+                                        : ""
+                                }
+                            />
+                        )}
                     />
 
                     <Button
                         type="submit"
-                        disabled={isPending}
+                        disabled={isSubmitting || isPending}
                         className={styles["register-modal__btn-submit"]}
                     >
-                        {isPending ? "Регистрация выполняется..." : "Зарегистрироваться"}
+                        {isSubmitting || isPending ? "Регистрация выполняется..." : "Зарегистрироваться"}
                     </Button>
                 </form>
             </div>
         </Modal>
     );
-};
+}
