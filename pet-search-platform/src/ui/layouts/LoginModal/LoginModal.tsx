@@ -6,6 +6,7 @@ import { useLogin } from "@hooks/useLogin.ts";
 import styles from "./styles/LoginModal.module.scss";
 import type { LoginError } from "@api/errors/loginError.ts";
 import { notify } from "@layouts/GlobalNotificationContainer/GlobalNotificationContainer.tsx";
+import {useAuth} from "@app/contexts/authContext.tsx";
 
 interface LoginModalProps {
     isOpen: boolean;
@@ -19,6 +20,8 @@ interface LoginFormInputs {
 }
 
 export const LoginModal = ({ isOpen, onClose, onSuccess }: LoginModalProps) => {
+
+    const { login } = useAuth();
     const {
         control,
         handleSubmit,
@@ -46,6 +49,8 @@ export const LoginModal = ({ isOpen, onClose, onSuccess }: LoginModalProps) => {
             { email, password },
             {
                 onSuccess: (user) => {
+                    login(user);
+                    notify("С возвращением!", "success");
                     onSuccess?.(user);
                     onClose();
                 },

@@ -1,6 +1,7 @@
 import type { Person } from "@entities/person/person.types.ts";
 import { API_URL } from "../configures.ts";
 import { LoginError } from "../errors/loginError.ts";
+import {md5Hash} from "@utils/md5Hash.ts";
 
 interface LoginInput {
     email: string;
@@ -33,7 +34,7 @@ export const login = async ({ email, password }: LoginInput): Promise<Person> =>
 
     const user = users[0];
 
-    if (user.passwordHash !== password) {
+    if (user.passwordHash !== md5Hash(password)) {
         throw new LoginError("invalidPassword", "Неверный пароль");
     }
 
