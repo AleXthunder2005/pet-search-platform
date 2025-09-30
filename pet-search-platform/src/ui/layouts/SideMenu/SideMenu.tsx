@@ -33,7 +33,7 @@ const SideMenu = ({ menuItems, activeItem, onTabChange }: SideMenuProps) => {
                 >
                     {item.icon}
                     <a
-                        href="#"
+                        href={`#${item.tabKey}`}
                         className={styles['side-menu__item-title']}
                     >
                         {item.title}

@@ -4,7 +4,7 @@ import { Wrapper } from "@layouts/Wrapper/Wrapper";
 import { Pagination } from "@components/Pagination/Pagination";
 import { useState, useEffect, useMemo } from "react";
 import { Searcher } from "@layouts/Searcher";
-import { PetViewer } from "@layouts/PetsViewer/PetsViewer.tsx";
+import {PetsViewer} from "@layouts/PetsViewer/PetsViewer.tsx";
 import { notify } from "@layouts/GlobalNotificationContainer/GlobalNotificationContainer.tsx";
 import { TabList } from "@layouts/TabList";
 import type { ListItem } from "@layouts/TabList/TabList.tsx";
@@ -67,18 +67,18 @@ export const HomePage = () => {
                 </aside>
 
                 <div className={styles["home-page__content"]}>
-                    <PetViewer
+                    <PetsViewer
                         pets={paginatedPets}
                         isLoading={isLoading}
                         pageSize={PAGE_SIZE}
                         onPetClick={setSelectedPet}
                     />
 
-                    <Pagination
+                    {!!filteredPets.length && <Pagination
                         currentPage={page}
                         totalPages={totalPages}
                         onPageChange={setPage}
-                    />
+                    />}
 
                     <AboutPetModal
                         pet={selectedPet || undefined}

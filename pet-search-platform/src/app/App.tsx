@@ -3,6 +3,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {GlobalNotificationContainer} from "@layouts/GlobalNotificationContainer";
 import {HomePage} from "@pages/HomePage";
 import {AuthProvider} from "@app/contexts/authContext.tsx";
+import ProfilePage from "@pages/ProfilePage/ProfilePage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ function App() {
               <BrowserRouter>
                   <Routes>
                       <Route path="/" element={<HomePage />} />
+                      <Route path="/profile" element={<ProfilePage />} />
                   </Routes>
               </BrowserRouter>
           </AuthProvider>

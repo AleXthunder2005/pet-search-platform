@@ -6,6 +6,7 @@ import Eye from "../icons/eye.svg?react";
 import EyeSlash from "../icons/eyeSlash.svg?react";
 import Loupe from "../icons/loupe.svg?react";
 import DocumentPlus from "../icons/documentPlus.svg?react";
+import FaceSmile from "../icons/faceSmile.svg?react";
 
 export const iconsMap = {
     petPaw: PetPaw,
@@ -16,6 +17,7 @@ export const iconsMap = {
     eyeSlash: EyeSlash,
     loupe: Loupe,
     documentPlus: DocumentPlus,
+    faceSmile: FaceSmile,
 } as const;
 
 export type IconName = keyof typeof iconsMap;

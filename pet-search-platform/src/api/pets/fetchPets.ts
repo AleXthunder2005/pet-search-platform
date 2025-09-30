@@ -16,3 +16,11 @@ export const fetchAllPets = async (): Promise<Pet[]> => {
     }
     return await response.json();
 };
+
+export const fetchPetsByPersonId = async (personId: number): Promise<Pet[]> => {
+    const response = await fetch(`${API_URL}/pets?personId=${personId}`);
+    if (!response.ok) {
+        throw new Error("Не удалось загрузить список ваших питомцев!");
+    }
+    return await response.json();
+};
