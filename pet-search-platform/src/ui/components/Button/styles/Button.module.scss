@@ -1,8 +1,8 @@
 .btn {
   font-family: var(--font-family);
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 6px;
+  font-size: 1rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.375rem;
   cursor: pointer;
   transition: background 0.2s ease-in, border-color 0.2s ease-in;
 
@@ -12,7 +12,7 @@
 
   &--primary {
     background: var(--primary-orange-color);
-    border: 2px solid transparent;
+    border: 0.125rem solid transparent;
     color: var(--primary-white-color);
 
     &:hover {
@@ -28,7 +28,7 @@
 
   &--outline {
     background: transparent;
-    border: 2px solid var(--primary-orange-color);
+    border: 0.125rem solid var(--primary-orange-color);
     color: var(--primary-orange-color);
 
     &:hover {

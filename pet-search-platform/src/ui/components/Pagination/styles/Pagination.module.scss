@@ -1,12 +1,12 @@
 .pagination-container {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 
   &__pagination-button {
     width: var(--pagination-button-size);
     height: var(--pagination-button-size);
-    border: 1px solid var(--primary-orange-color);
-    border-radius: 4px;
+    border: 0.0625rem solid var(--primary-orange-color);
+    border-radius: 0.25rem;
     background-color: var(--primary-white-color);
     cursor: pointer;
     transition: all 0.3s ease;

@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid var(--primary-light-gray-color);
+  padding: 0.625rem;
+  border-bottom: 0.0625rem solid var(--primary-light-gray-color);
 
   &__logo {
     align-items: center;
@@ -12,13 +12,13 @@
   &__actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
   }
 }
 
-.nav-list{
+.nav-list {
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
   list-style: none;
 
   &__item-link {
@@ -38,5 +38,3 @@
     }
   }
 }
-
-

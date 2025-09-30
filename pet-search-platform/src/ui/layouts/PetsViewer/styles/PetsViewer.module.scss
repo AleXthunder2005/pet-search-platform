@@ -1,9 +1,9 @@
 .pet-viewer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.25rem;
 
-  &--empty{
+  &--empty {
     font-family: var(--font-family);
     font-size: var(--tabs-font-size);
     font-weight: var(--tabs-font-weight);
@@ -11,4 +11,3 @@
     color: var(--primary-dark-gray-color);
   }
 }
-

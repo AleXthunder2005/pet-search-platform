@@ -24,45 +24,44 @@
   --success-border-color: #127028;
   --success-background-color: #e5ffed;
 
-
   --error-text-color: #dc3545;
   --error-border-color: #a81928;
   --error-background-color: #ffeaea;
 
   --font-family: Tahoma, sans-serif;
-  --nav-font-size: 18px;
+  --nav-font-size: 1.125rem;
   --nav-font-weight: 500;
 
-  --input-font-size: 16px;
+  --input-font-size: 1rem;
   --input-font-weight: 500;
-  --input-border-radius: 8px;
+  --input-border-radius: 0.5rem;
 
-  --label-font-size: 16px;
+  --label-font-size: 1rem;
   --label-font-weight: 300;
   --label-color: var(--primary-black-color);
 
-  --checkbox-size: 18px;
+  --checkbox-size: 1.125rem;
 
-  --tabs-font-size: 16px;
+  --tabs-font-size: 1rem;
   --tabs-font-weight: 500;
   --tabs-title-font-weight: 700;
-  --tabs-border-radius: 5px;
+  --tabs-border-radius: 0.3125rem;
 
-  --notification-font-size: 14px;
+  --notification-font-size: 0.875rem;
   --notification-error-background-color: var(--error-text-color);
   --notification-success-background-color: var(--success-text-color);
   --notification-info-background-color: var(--primary-white-color);
 
+  --pagination-button-size: 2.25rem;
 
-  --pagination-button-size: 36px;
+  --error-message-font-size: 0.9375rem;
+  --error-message-padding-left: 0.625rem;
+  --success-message-font-size: 0.9375rem;
+  --success-message-padding-left: 0.625rem;
 
-  --error-message-font-size: 15px;
-  --error-message-padding-left: 10px;
-  --success-message-font-size: 15px;
-  --success-message-padding-left: 10px;
-
-  --wrapper-width: 1280px;
+  --wrapper-width: 80rem;
 }
+
 
 * {
   padding: 0;
@@ -84,4 +83,23 @@ input {
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
 }

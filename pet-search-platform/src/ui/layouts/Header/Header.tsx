@@ -58,8 +58,8 @@ export const Header = () => {
             <div className={styles["header__actions"]}>
                 {!user && (
                     <>
-                        <Button isPrimary={false} onClick={() => setIsRegister(true)}>Зарегистрироваться</Button>
-                        <Button isPrimary onClick={() => setIsLogin(true)}>Войти</Button>
+                        <Button isPrimary={false} onClick={() => setIsRegister(true)}>Регистрация</Button>
+                        <Button isPrimary onClick={() => setIsLogin(true)}>Вход</Button>
                     </>
                 )}
                 {user && (

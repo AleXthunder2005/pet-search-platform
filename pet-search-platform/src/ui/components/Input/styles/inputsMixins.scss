@@ -1,4 +1,4 @@
-// базовый контейнер для любого инпута (input, textarea и т.д.)
+// base container for any input (input, textarea, etc.)
 @mixin input-container {
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   row-gap: 4px;
 }
 
-// стили для label
+// styles for label
 @mixin input-label {
   font-family: var(--font-family);
   font-size: var(--label-font-size);
@@ -21,7 +21,7 @@
   }
 }
 
-// враппер для инпута + иконки
+// wrapper for input + icon
 @mixin input-box {
   display: flex;
   flex-direction: row;
@@ -30,12 +30,12 @@
   width: 100%;
 }
 
-// иконка
+// icon
 @mixin input-icon {
   flex: 0 0 auto;
 }
 
-// базовые стили поля
+// base field styles
 @mixin input-base {
   padding: 10px;
   border: 2px solid var(--primary-light-gray-color);
@@ -75,7 +75,7 @@
   background-color: var(--success-background-color);
 }
 
-// disable
+// disabled
 @mixin input-disabled {
   cursor: not-allowed;
   background-color: var(--primary-white-color);
