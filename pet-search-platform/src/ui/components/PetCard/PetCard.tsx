@@ -9,9 +9,10 @@ interface PetCardProps {
     pet?: Pet;
     isPending?: boolean;
     className?: string;
+    onClick?: (pet: Pet) => void;
 }
 
-export const PetCard = ({ pet, isPending, className }: PetCardProps) => {
+export const PetCard = ({ pet, isPending, className, onClick }: PetCardProps) => {
     const petCardClassList = clsx(styles['pet-card'], className);
 
     if (isPending) {
@@ -39,7 +40,9 @@ export const PetCard = ({ pet, isPending, className }: PetCardProps) => {
 
     return (
         <div className={petCardClassList}>
-            <div className={styles['pet-card__image-wrapper']}>
+            <div className={styles['pet-card__image-wrapper']}
+                 onClick={() => onClick?.(pet)}
+            >
                 <ImageWithLoader
                     src={pet.imageUrl}
                     alt={`pet ${pet.petName}`}

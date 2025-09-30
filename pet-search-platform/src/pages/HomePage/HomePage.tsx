@@ -10,6 +10,8 @@ import { TabList } from "@layouts/TabList";
 import type { ListItem } from "@layouts/TabList/TabList.tsx";
 import { useAllPets } from "@hooks/useAllPets.ts";
 import {buildTabItems, filterPets, paginatePets} from "@pages/HomePage/helpers/filters.ts";
+import {AboutPetModal} from "@layouts/AboutPetModal";
+import type {Pet} from "@entities/pet/pet.types.ts";
 
 const PAGE_SIZE = 6;
 
@@ -17,9 +19,9 @@ export const HomePage = () => {
     const [page, setPage] = useState(1);
     const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState<string | undefined>(undefined);
+    const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
 
     const { data: allPets = [], isLoading, isError } = useAllPets();
-
     const filteredBySearchPets = useMemo(
         () => filterPets(allPets, search),
         [allPets, search]
@@ -69,12 +71,19 @@ export const HomePage = () => {
                         pets={paginatedPets}
                         isLoading={isLoading}
                         pageSize={PAGE_SIZE}
+                        onPetClick={setSelectedPet}
                     />
 
                     <Pagination
                         currentPage={page}
                         totalPages={totalPages}
                         onPageChange={setPage}
+                    />
+
+                    <AboutPetModal
+                        pet={selectedPet || undefined}
+                        isOpen={!!selectedPet}
+                        onClose={() => setSelectedPet(null)}
                     />
                 </div>
             </main>

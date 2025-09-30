@@ -1,5 +1,4 @@
 import styles from './styles/AboutPetModal.module.scss'
-import { usePet } from "@hooks/usePet";
 import { usePerson } from "@hooks/usePerson";
 import { Spinner } from "@components/Spinner";
 import { Notification } from "@components/Notification";
@@ -7,30 +6,26 @@ import { Modal } from "@components/Modal";
 import clsx from "clsx";
 import { ImageWithLoader } from "@components/ImageWithLoader/ImageWithLoader";
 import NoImageSVG from "@images/no-image.svg?react";
-import {timeSince} from "@entities/pet/helpers/timeSince.ts";
+import { timeSince } from "@entities/pet/helpers/timeSince.ts";
+import type { Pet } from "@entities/pet/pet.types";
 
 interface AboutPetModalProps {
-    petId?: number;
+    pet?: Pet;
     isOpen: boolean;
     onClose: () => void;
     className?: string;
 }
 
 export const AboutPetModal = ({
-                                  petId,
+                                  pet,
                                   isOpen,
                                   onClose,
                                   className,
                               }: AboutPetModalProps) => {
-    const { data: petData, isLoading: isPetLoading, isError: isPetError } = usePet(petId);
-
-    const { data: personData, isLoading: isPersonLoading, isError: isPersonError } =
-        usePerson(petData?.personId, { enabled: !!petData?.personId });
+    const { data: personData, isLoading, isError } =
+        usePerson(pet?.personId, { enabled: !!pet?.personId });
 
     const modalClassList = clsx(styles["about-pet-modal"], className);
-
-    const isLoading = isPetLoading || isPersonLoading;
-    const isError = isPetError || isPersonError;
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -41,15 +36,15 @@ export const AboutPetModal = ({
             )}
 
             {isError && (
-                <Notification message="Не удалось прочитать данные питомца! Возможно питомец или его владелец удалены." status="error" />
+                <Notification message="Не удалось прочитать данные владельца." status="error" />
             )}
 
-            {petData && personData && (
+            {pet && personData && (
                 <div className={modalClassList}>
                     <div className={styles["about-pet-modal__image-wrapper"]}>
                         <ImageWithLoader
-                            src={petData.imageUrl}
-                            alt={`pet ${petData.petName}`}
+                            src={pet.imageUrl}
+                            alt={`pet ${pet.petName}`}
                             className={styles["about-pet-modal__image"]}
                             fallback={
                                 <NoImageSVG
@@ -65,21 +60,21 @@ export const AboutPetModal = ({
                     <div className={styles["about-pet-modal__content"]}>
                         <div className={styles["about-pet-modal__header"]}>
                             <h2 className={styles["about-pet-modal__name"]}>
-                                {petData.petName} ({petData.sex === "male" ? "Мальчик" : "Девочка"})
+                                {pet.petName} ({pet.sex === "male" ? "Мальчик" : "Девочка"})
                             </h2>
                             <span className={styles["about-pet-modal__time"]}>
-                                {timeSince(new Date (petData.disappearanceDate))}
+                                {timeSince(new Date(pet.disappearanceDate))}
                             </span>
                         </div>
 
                         <div className={styles["about-pet-modal__info"]}>
-                            <p className={styles["about-pet-modal__breed"]}>{petData.breed}</p>
-                            <p className={styles["about-pet-modal__city"]}>{petData.city}</p>
+                            <p className={styles["about-pet-modal__breed"]}>{pet.breed}</p>
+                            <p className={styles["about-pet-modal__city"]}>{pet.city}</p>
                         </div>
 
-                        {petData.description && (
+                        {pet.description && (
                             <p className={styles["about-pet-modal__description"]}>
-                                {petData.description}
+                                {pet.description}
                             </p>
                         )}
 

@@ -6,9 +6,10 @@ interface PetViewerProps {
     pets: Pet[];
     isLoading: boolean;
     pageSize: number;
+    onPetClick?: (pet: Pet) => void;
 }
 
-export const PetViewer = ({ pets, isLoading, pageSize }: PetViewerProps) => {
+export const PetViewer = ({ pets, isLoading, pageSize, onPetClick}: PetViewerProps) => {
     if (isLoading || !pets.length) {
         return (
             <div className={styles["pet-viewer"]}>
@@ -22,7 +23,7 @@ export const PetViewer = ({ pets, isLoading, pageSize }: PetViewerProps) => {
     return (
         <div className={styles["pet-viewer"]}>
             {pets.map((pet) => (
-                <PetCard key={pet.id} pet={pet} />
+                <PetCard key={pet.id} pet={pet} onClick={onPetClick}/>
             ))}
         </div>
     );
