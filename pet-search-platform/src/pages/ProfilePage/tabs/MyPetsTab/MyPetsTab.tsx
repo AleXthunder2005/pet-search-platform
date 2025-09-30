@@ -4,7 +4,6 @@ import { useMyPets } from "@hooks/useMyPets.ts";
 import { Pagination } from "@components/Pagination/Pagination";
 import { paginatePets } from "@pages/HomePage/helpers/filters.ts";
 import { notify } from "@layouts/GlobalNotificationContainer/GlobalNotificationContainer.tsx";
-import { AboutPetModal } from "@layouts/AboutPetModal";
 import { PetsViewer } from "@layouts/PetsViewer";
 import { Button } from "@components/Button";
 import { AddPetModal } from "@layouts/AddPetModal";
@@ -59,16 +58,14 @@ export const MyPetsTab = () => {
                 </Button>
             </div>
 
-            <AboutPetModal
-                pet={selectedPet || undefined}
-                isOpen={!!selectedPet}
-                onClose={() => setSelectedPet(null)}
-            />
-
             <AddPetModal
-                isOpen={isAddOpen}
-                onClose={() => setIsAddOpen(false)}
+                isOpen={isAddOpen || !!selectedPet}
+                onClose={() => {
+                    setIsAddOpen(false);
+                    setSelectedPet(null)
+                }}
                 onSuccess={() => refetch()}
+                pet={selectedPet || undefined}
             />
         </div>
     );

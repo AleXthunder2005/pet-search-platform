@@ -39,10 +39,10 @@ export const PetCard = ({ pet, isPending, className, onClick }: PetCardProps) =>
     if (!pet) return null;
 
     return (
-        <div className={petCardClassList}>
-            <div className={styles['pet-card__image-wrapper']}
-                 onClick={() => onClick?.(pet)}
-            >
+        <div className={petCardClassList}
+             onClick={() => onClick?.(pet)}
+        >
+            <div className={styles['pet-card__image-wrapper']}>
                 <ImageWithLoader
                     src={pet.imageUrl}
                     alt={`pet ${pet.petName}`}

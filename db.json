@@ -346,6 +346,97 @@
       "imageUrl": "https://placekitten.com/220/280",
       "city": "Красноярск",
       "personId": 10
+    },
+    {
+      "petName": "Барсик кошкович",
+      "breed": "Британец",
+      "kind": "Кот",
+      "city": "Пинск",
+      "disappearanceDate": "2025-09-29",
+      "description": "Рыженький такой",
+      "id": "98ba"
+    },
+    {
+      "id": "c24c",
+      "petName": "ыфв",
+      "breed": "ва",
+      "kind": "ыва",
+      "sex": "Мальчик",
+      "city": "ыва",
+      "disappearanceDate": "2025-09-29",
+      "description": "adsasd",
+      "personId": "e7c6"
+    },
+    {
+      "id": "303a",
+      "petName": "лот",
+      "breed": "лот",
+      "kind": "лот",
+      "sex": "женский",
+      "city": "лот",
+      "disappearanceDate": "2025-09-20",
+      "description": "лотлотлот",
+      "personId": "e7c6",
+      "imageUrl": "blob:http://localhost:5173/18814107-cb9f-4a07-aaf1-636ddc5882b3"
+    },
+    {
+      "id": "8b7f",
+      "petName": "фы",
+      "breed": "фы",
+      "kind": "фы",
+      "sex": "женский",
+      "city": "12",
+      "disappearanceDate": "2025-09-18",
+      "description": "фы",
+      "personId": "e7c6",
+      "imageUrl": "blob:http://localhost:5173/faddd7e5-ae54-4513-bdbb-6e873d97b83b"
+    },
+    {
+      "id": "8b0a",
+      "petName": "1",
+      "breed": "1",
+      "kind": "1",
+      "sex": "женский",
+      "city": "1",
+      "disappearanceDate": "2025-09-29",
+      "description": "1",
+      "personId": "e7c6",
+      "imageUrl": "blob:http://localhost:5173/bd0cac92-a904-4e80-b445-4ae94755e1d8"
+    },
+    {
+      "id": "a216",
+      "petName": "2",
+      "breed": "2",
+      "kind": "2",
+      "sex": "мужской",
+      "city": "2",
+      "disappearanceDate": "2025-09-24",
+      "description": "2",
+      "personId": "e7c6",
+      "imageUrl": "blob:http://localhost:5173/4f176c54-8155-49ff-bca2-f13bac5a88a7"
+    },
+    {
+      "petName": "4",
+      "breed": "55",
+      "kind": "4",
+      "sex": "мужской",
+      "city": "4",
+      "disappearanceDate": "2025-09-29T00:00:00.000Z",
+      "description": "4",
+      "imageUrl": "https://avatars.mds.yandex.net/i?id=93c45f1acea97c9a643c2bb932e6372f8a06209d-8439108-images-thumbs&n=13",
+      "id": "68aa"
+    },
+    {
+      "id": "f05d",
+      "petName": "5",
+      "breed": "5",
+      "kind": "5",
+      "sex": "женский",
+      "city": "5",
+      "disappearanceDate": "2025-09-26",
+      "description": "5",
+      "imageUrl": "https://static.tildacdn.com/tild3163-3066-4534-b633-323361313535/image.png",
+      "personId": "e7c6"
     }
   ]
 }
