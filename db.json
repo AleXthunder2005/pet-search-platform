@@ -101,9 +101,14 @@
       "passwordHash": "$2b$10$abcdefg777"
     },
     {
-      "id": "e7c6",
+      "name": "ф",
+      "surname": "ф",
+      "gender": "мужской",
       "email": "aleksandrnar2005@gmail.com",
-      "passwordHash": "8669bfddbf42cacb0f4a4b8f79f6bcd6"
+      "phone": "+375293226658",
+      "age": "2",
+      "id": "e7c6",
+      "passwordHash": "$2b$10$abcdefg777"
     }
   ],
   "pets": [
