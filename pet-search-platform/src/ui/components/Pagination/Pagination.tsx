@@ -29,6 +29,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
                         })
                     }
                     onClick={() => onPageChange(page)}
+                    key={page}
                 >
                     {page}
                 </button>
