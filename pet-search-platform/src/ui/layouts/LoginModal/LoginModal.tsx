@@ -31,6 +31,10 @@ export const LoginModal = ({ isOpen, onClose, onSuccess }: LoginModalProps) => {
     } = useForm<LoginFormInputs>({
         mode: "onSubmit",
         reValidateMode: "onSubmit",
+        defaultValues: {
+            email: "",
+            password: "",
+        },
     });
 
     const { mutate, isPending } = useLogin();
