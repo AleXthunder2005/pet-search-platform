@@ -16,6 +16,7 @@ import type { Pet } from "@entities/pet/pet.types.ts";
 import clsx from "clsx";
 import {ImageWithLoader} from "@components/ImageWithLoader/ImageWithLoader.tsx";
 import NoImageSVG from '@images/no-image.svg?react';
+import {useDeletePet} from "@hooks/useDeletePet.ts";
 
 interface AddPetModalProps {
     isOpen: boolean;
@@ -40,6 +41,17 @@ export const AddPetModal = ({ isOpen, onClose, onSuccess, pet }: AddPetModalProp
     const { mutate: updatePet, isPending: isUpdating } = useUpdatePet({
         onSuccess: () => {
             notify("Данные питомца обновлены!", "success");
+            onSuccess?.();
+            onClose();
+        },
+        onError: (err) => {
+            notify(err.message, "error");
+        },
+    });
+
+    const { mutate: deletePet, isPending: isDeleting } = useDeletePet({
+        onSuccess: () => {
+            notify("Объявление о пропаже питомца успешно удалено!", "success");
             onSuccess?.();
             onClose();
         },
@@ -175,7 +187,6 @@ export const AddPetModal = ({ isOpen, onClose, onSuccess, pet }: AddPetModalProp
                                 if (!value) return true;
                                 const selected = new Date(value);
                                 const today = new Date();
-                                today.setHours(0, 0, 0, 0);
                                 return selected <= today || "Дата не может быть в будущем";
                             },
                         }}
@@ -235,6 +246,15 @@ export const AddPetModal = ({ isOpen, onClose, onSuccess, pet }: AddPetModalProp
                     <Button type="submit" disabled={isPending} className={styles["add-pet-modal__btn-submit"]}>
                         {isPending ? (pet ? "Сохранение..." : "Добавление...") : pet ? "Сохранить изменения" : "Добавить питомца"}
                     </Button>
+                    {pet && (
+                        <Button
+                            onClick={() => deletePet(pet?.id)}
+                            disabled={isDeleting}
+                            className={styles["add-pet-modal__btn-submit"]}
+                        >
+                            {isDeleting ? "Удаление..." : "Удалить объявление"}
+                        </Button>
+                    )}
                 </form>
             </div>
         </Modal>

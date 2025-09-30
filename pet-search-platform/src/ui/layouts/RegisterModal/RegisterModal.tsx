@@ -9,6 +9,7 @@ import { isValidEmail } from "@helpers/isValidEmail";
 import { validatePasswordRules, passwordStrengthLabel } from "@helpers/validatePasswordRules";
 import { notify } from "@layouts/GlobalNotificationContainer/GlobalNotificationContainer.tsx";
 import type { RegisterError } from "@api/errors/registerError.ts";
+import {useAuth} from "@app/contexts/authContext.tsx";
 
 type FormValues = {
     email: string;
@@ -38,10 +39,12 @@ export const RegisterModal = ({ isOpen, onClose, onSuccess }: RegisterModalProps
     });
 
     const { mutateAsync, isPending } = useRegister();
+    const {login} = useAuth();
 
     const onSubmit = async (data: FormValues) => {
         try {
             const user = await mutateAsync({ email: data.email.trim(), password: data.password.trim() });
+            login(user);
             notify("Регистрация прошла успешно", "success");
             reset();
             onSuccess?.(user);

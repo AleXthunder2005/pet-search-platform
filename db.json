@@ -101,8 +101,13 @@
       "passwordHash": "$2b$10$abcdefg777"
     },
     {
-      "id": "6e4a",
+      "name": "Наривончик",
+      "surname": "Александр",
+      "gender": "мужской",
       "email": "aleksandrnar2005@gmail.com",
+      "phone": "+375295252522",
+      "age": "19",
+      "id": "2605",
       "passwordHash": "1bbd886460827015e5d605ed44252251"
     }
   ],
@@ -346,6 +351,18 @@
       "imageUrl": "https://placekitten.com/305/300",
       "city": "Тула",
       "personId": 20
+    },
+    {
+      "id": "a5ff",
+      "petName": "Барсик",
+      "breed": "Британский кот",
+      "kind": "Кот",
+      "sex": "женский",
+      "city": "Минск",
+      "disappearanceDate": "2025-09-29",
+      "description": "Потерялся барсик, это вообще капец",
+      "imageUrl": "https://kp.ua/img/article/6475/69_news_big-v1649483297.jpg",
+      "personId": "2605"
     }
   ]
 }
