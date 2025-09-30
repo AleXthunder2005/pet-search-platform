@@ -1,9 +1,9 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {GlobalNotificationContainer} from "@layouts/GlobalNotificationContainer";
-import {HomePage} from "@pages/HomePage";
-import {AuthProvider} from "@app/contexts/authContext.tsx";
-import {ProfilePage} from "@pages/ProfilePage";
+import {AuthProvider, useAuth} from "@app/contexts/authContext.tsx";
+import {UserRoutes} from "@app/routes/UserRoutes/UserRoutes.tsx";
+import {GuestRoutes} from "@app/routes/GuestRoutes/GuestRoutes.tsx";
 
 const queryClient = new QueryClient();
 
@@ -13,15 +13,21 @@ function App() {
       <QueryClientProvider client={queryClient}>
           <AuthProvider>
               <BrowserRouter>
-                  <Routes>
-                      <Route path="/" element={<HomePage />} />
-                      <Route path="/profile" element={<ProfilePage />} />
-                  </Routes>
+                  <RouterSelector/>
               </BrowserRouter>
           </AuthProvider>
           <GlobalNotificationContainer />
       </QueryClientProvider>
   )
 }
+
+const RouterSelector = () => {
+    const { user } = useAuth();
+
+    if (user) {
+        return <UserRoutes />;
+    }
+    return <GuestRoutes />;
+};
 
 export default App
