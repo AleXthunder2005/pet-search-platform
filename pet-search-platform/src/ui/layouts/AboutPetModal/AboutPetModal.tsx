@@ -60,7 +60,7 @@ export const AboutPetModal = ({
                     <div className={styles["about-pet-modal__content"]}>
                         <div className={styles["about-pet-modal__header"]}>
                             <h2 className={styles["about-pet-modal__name"]}>
-                                {pet.petName} ({pet.sex === "male" ? "Мальчик" : "Девочка"})
+                                {pet.petName} ({pet.sex === "мужской" ? "Мальчик" : "Девочка"})
                             </h2>
                             <span className={styles["about-pet-modal__time"]}>
                                 {timeSince(new Date(pet.disappearanceDate))}

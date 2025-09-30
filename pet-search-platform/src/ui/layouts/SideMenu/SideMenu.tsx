@@ -15,7 +15,7 @@ interface SideMenuProps {
     onTabChange: (activeTab: TabTypes) => void;
 }
 
-const SideMenu = ({ menuItems, activeItem, onTabChange }: SideMenuProps) => {
+export const SideMenu = ({ menuItems, activeItem, onTabChange }: SideMenuProps) => {
     const handleClick = (tabKey: TabTypes, e: React.MouseEvent) => {
         e.preventDefault();
         onTabChange(tabKey);
@@ -43,5 +43,3 @@ const SideMenu = ({ menuItems, activeItem, onTabChange }: SideMenuProps) => {
         </aside>
     );
 };
-
-export default SideMenu;

@@ -1,11 +1,11 @@
 import {useState} from "react";
 import {Icon} from "@components/Icon";
 import styles from './styles/ProfilePage.module.scss'
-import SideMenu, {type TabTypes} from "@layouts/SideMenu/SideMenu.tsx";
 import {Header} from "@layouts/Header";
 import {Wrapper} from "@layouts/Wrapper";
 import {MyPetsTab} from "@pages/ProfilePage/tabs/MyPetsTab/MyPetsTab.tsx";
 import {ProfileTab} from "@pages/ProfilePage/tabs/ProfileTab";
+import {SideMenu, type TabTypes} from "@layouts/SideMenu";
 
 const userIcon = <Icon name="userCircle" size={20} color={"gray"}/>;
 const pawIcon = <Icon name="petPaw" size={20} color={"gray"}/>;

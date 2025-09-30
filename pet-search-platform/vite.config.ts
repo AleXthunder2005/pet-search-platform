@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename)
 
 export default defineConfig({
   plugins: [react(), svgr()],
+  base: '/pet-search-platform/',
   resolve: {
     alias: {
       '@app': path.resolve(__dirname, './src/app'),

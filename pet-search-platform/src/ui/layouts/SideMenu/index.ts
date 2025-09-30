@@ -1,2 +1,2 @@
 export {SideMenu} from "./SideMenu";
-export type {TabTypes} from './TabTypes';
+export type {TabTypes} from './SideMenu';
